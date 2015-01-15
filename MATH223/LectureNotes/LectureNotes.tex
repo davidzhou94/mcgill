@@ -1,29 +1,18 @@
 \documentclass{report} 
-
 \usepackage{amsmath}
-
 \usepackage{amsthm,amssymb,graphicx}
-
 \graphicspath{ {F:\repos\mcgill\MATH223\LectureNotes} }
 
 \newtheorem{_thm}{Theorem}
-
 \theoremstyle{definition}
-
 \newtheorem{_prob}{Problem}
-
 \newtheorem{_sol}{Solution}
-
 \newtheorem{_def}{Definition}
-
 \newtheorem{_rem}{Remark}
 
 \begin{document} 
-
 \title{MATH 223, Winter 2015} 
-
 \author{Yang David Zhou}
-
 \maketitle
 
 \chapter{Introduction}
@@ -48,7 +37,7 @@ Office Hours: W4:15-5:45PM, F3:00-4:30PM \newline
 
 The midterm will be scheduled for the 7th week of class.
 
-\section{Review}
+\section{A Review of Vectors}
 
 \subsection{Vectors in \(\mathbb{R}^n\)}
 
@@ -58,7 +47,7 @@ The midterm will be scheduled for the 7th week of class.
 We use the term \textbf{scalar} to refer to an element in \(\mathbb{R}\).
 \end{_rem}
 
-\subsection{Basic definitions}
+\subsection{Basic Definitions}
 
 \textbf{Addition}
 
@@ -82,7 +71,7 @@ Two vectors \(u\) and \(v\) are said to be equal (\(u=v\)) if \(a_i=b_i \forall 
 
 \textbf{Zero Vector}
 
-The zero vector is defined as \(0=(0..0)\). \newline
+The zero vector is defined as \(0=(0...0)\). \newline
 
 \textbf{Linear Combination}
 
@@ -124,10 +113,10 @@ A vector is called a \textbf{unit vector} if \(\|u\|=1\).
 
 For any non-zero vector \(v\), the vector 
 \[\hat{v}=\frac{1}{\|v\|} v\]
-is the only unit vector with the same direction of \(v\).
+is the only unit vector with the same direction of $v$.
 The process of finding \(\hat{v}\) is called \textbf{normalizing}.
 
-\subsection{Theorem: Cauchy-Schwarz inequality}
+\subsection{Theorem: Cauchy-Schwarz Inequality}
 
 \begin{_thm}
 Given any two vectors \(u,v\in \mathbb{R}^n\), then,
@@ -151,7 +140,7 @@ Take the Discriminant as \(b^2-4ac\iff b^2\leq 4ac\).
 \end{align*}
 \end{proof}
 
-\subsection{Theorem: Triangle Inequality}
+\subsection{Theorem: Minkowski Triangle Inequality}
 
 \begin{_thm}
 Given \(u,v\in \mathbb{R}^n\), then \(\|u+v\|\leq \|u\|+\|v\|\).
@@ -166,5 +155,41 @@ Given \(u,v\in \mathbb{R}^n\), then \(\|u+v\|\leq \|u\|+\|v\|\).
 So, \(\|u+v\|^2\leq (\|u\|+\|v\|)^2\).
 Take the square root and we are done.
 \end{proof}
+
+\subsection{Geometry with Vectors}
+
+\begin{_def}
+The \textbf{distance} between vectors \(u,v\in \mathbb{R}^n\) is given by,
+\[d(u,v)=\|u-v\|=\sqrt{(a_1-b_1)^2+...+(a_n-b_n)^2}\]
+\end{_def}
+
+\begin{_def}
+The \textbf{angle} between vectors \(u,v\in \mathbb{R}^n\) is given by,
+\[cos\theta =\frac{u\cdot v}{\|u\|\|v\|} \quad \theta \in [0,\pi]\]
+\end{_def}
+
+Observe that in the previous definition, the angle is well defined.
+
+\[-\|u\|\|v\|\leq -|u\cdot v|\leq u\cdot v\leq u\cdot v\leq |u\cdot v|\leq \|u\|\|v\|\]
+
+Dividing the entire inequality by $\|u\|\|v\|$ yields,
+
+\[-1\leq \frac{u\cdot v}{\|u\|\|v\|} \leq 1\]
+
+\begin{_def}
+A \textbf{hyperplane} $\mathcal{H}$ in $\mathbb{R}^n$ is the set of points $(x_1...x_n)$ that satisfy $a_1x_1+...+a_nx_n=b$ where $u=[a_1...a_n]\in \mathbb{R}^n$ and $b\in \mathbb{R}$.
+\end{_def}
+
+\begin{_def}
+The \textbf{line} in $\mathbb{R}^n$ passing through a point $P=(b_1...b_n)$ and in the direction of $v\in \mathbb{R}^n$ with $v\neq 0$.
+\[x=P+tu \quad t\in \mathbb{R}, \quad u=[a_1...a_n]\]
+\[ \left\{ 
+  \begin{array}{l}
+    x_1=a_1t+b_1 \\
+    x_n=a_nt+b_n
+  \end{array} \right.\]
+\end{_def}
+
+\section{Algebra of Matrices}
 
 \end{document}
