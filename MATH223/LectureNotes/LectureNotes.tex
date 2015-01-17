@@ -3,19 +3,25 @@
 \usepackage{amsthm,amssymb,graphicx}
 \graphicspath{ {F:\repos\mcgill\MATH223\LectureNotes} }
 
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
 \newtheorem{_thm}{Theorem}
 \theoremstyle{definition}
 \newtheorem{_prob}{Problem}
 \newtheorem{_sol}{Solution}
 \newtheorem{_def}{Definition}
 \newtheorem{_rem}{Remark}
+\newtheorem{ex}{Example}
 
 \begin{document} 
-\title{MATH 223, Winter 2015} 
+\title{MATH 223} 
 \author{Yang David Zhou}
+\date{Winter 2015}
 \maketitle
-
-\chapter{Introduction}
 
 \section{Administrativa}
 
@@ -23,9 +29,11 @@
 
 Professor Tiago Salvador \newline
 
-Office: BH1036
+Website: http://www.math.mcgill.ca/tsalvador/ \newline
 
-Office Hours: W4:15-5:45PM, F3:00-4:30PM \newline
+Office: Burnside Building 1036
+
+Office Hours: M1:45-2:45PM W2:00-3:00PM, F3:30-4:30PM \newline
 
 \textbf{Grading}
 
@@ -37,9 +45,9 @@ Office Hours: W4:15-5:45PM, F3:00-4:30PM \newline
 
 The midterm will be scheduled for the 7th week of class.
 
-\section{A Review of Vectors}
+\chapter{Vectors}
 
-\subsection{Vectors in \(\mathbb{R}^n\)}
+\section{Vectors in \(\mathbb{R}^n\)}
 
 \(\mathbb{R}^n\) is the set of all \(n\)-tuples of real numbers \(u=(a_1 ... a_n) \mid a\in \mathbb{R}\) where \(a\) are the \textbf{components} or \textbf{entries}.
 
@@ -47,8 +55,9 @@ The midterm will be scheduled for the 7th week of class.
 We use the term \textbf{scalar} to refer to an element in \(\mathbb{R}\).
 \end{_rem}
 
-\subsection{Basic Definitions}
+\section{Basic Definitions}
 
+\begin{_def}
 \textbf{Addition}
 
 \(u, v \in \mathbb{R}^n\)
@@ -57,37 +66,40 @@ We use the term \textbf{scalar} to refer to an element in \(\mathbb{R}\).
 
 \(v=(b_1...b_n)\)
 
-\(u+v=(a_1+b_1...a_n+b_n)\) \newline
+\(u+v=(a_1+b_1...a_n+b_n)\)
+\end{_def}
 
+\begin{_def}
 \textbf{Scalar Multiplication}
 
 \(k\in \mathbb{R}\)
 
-\(ku=(ka_1...ka_n)\) \newline
+\(ku=(ka_1...ka_n)\)
+\end{_def}
 
-\textbf{Equality}
+\begin{_def}
+Two vectors \(u\) and \(v\) are said to be \textbf{equal} (\(u=v\)) if \(a_i=b_i \forall i=1...n\).
+\end{_def}
 
-Two vectors \(u\) and \(v\) are said to be equal (\(u=v\)) if \(a_i=b_i \forall i=1...n\). \newline
+\begin{_def}
+The \textbf{zero vector} is defined as \(0=(0...0)\).
+\end{_def}
 
-\textbf{Zero Vector}
-
-The zero vector is defined as \(0=(0...0)\). \newline
-
-\textbf{Linear Combination}
-
+\begin{_def}
 Suppose we are given \(m\) vectors \(u_1...u_m\in \mathbb{R}^n\) and \(m\) scalars \(k_1...k_m\in \mathbb{R}\).
 
 Let \(u=k_1u_1+...+k_mu_m\).
 
-Such a vector \(u\) is called a linear combination of the vectors \(u_1...u_m\). \newline
+Such a vector \(u\) is called a \textbf{linear combination} of the vectors \(u_1...u_m\).
+\end{_def}
 
-\textbf{Vector Multiple}
-
-A vector \(u\) can be called a multiple of \(v\) if there is a scalar \(k\) such that \(u=kv\) with \(k\neq 0\). 
+\begin{_def}
+A vector \(u\) can be called a \textbf{multiple} of \(v\) if there is a scalar \(k\) such that \(u=kv\) with \(k\neq 0\). 
 In the case \(k>0\) we say \(u\) is in the same direction as \(v\). 
-In the case \(k<0\) we say \(u\) is in the opposite direction of \(v\). \newline
+In the case \(k<0\) we say \(u\) is in the opposite direction of \(v\).
+\end{_def}
 
-\subsection{The Dot Product}
+\section{The Dot Product}
 
 \begin{_def}
 Let \(u=(a_1...a_n)\) and \(v=(b_1...b_n)\). The \textbf{dot product} or inner product is given by,
@@ -98,7 +110,7 @@ Let \(u=(a_1...a_n)\) and \(v=(b_1...b_n)\). The \textbf{dot product} or inner p
 The vectors \(u\) and \(v\) are \textbf{orthogonal} if \(u\cdot v=0\).
 \end{_def}
 
-\subsection{The Vector Norm}
+\section{The Vector Norm}
 
 \begin{_def}
 The \textbf{norm} or \textbf{length} of a vector is given by,
@@ -111,12 +123,14 @@ Thus \(\|u\|\geq 0\) and \(\|u\|=0\) if and only if (iff) \(u=0\).
 A vector is called a \textbf{unit vector} if \(\|u\|=1\).
 \end{_def}
 
+\begin{_def}
 For any non-zero vector \(v\), the vector 
 \[\hat{v}=\frac{1}{\|v\|} v\]
 is the only unit vector with the same direction of $v$.
 The process of finding \(\hat{v}\) is called \textbf{normalizing}.
+\end{_def}
 
-\subsection{Theorem: Cauchy-Schwarz Inequality}
+\section{Theorem: Cauchy-Schwarz Inequality}
 
 \begin{_thm}
 Given any two vectors \(u,v\in \mathbb{R}^n\), then,
@@ -140,7 +154,7 @@ Take the Discriminant as \(b^2-4ac\iff b^2\leq 4ac\).
 \end{align*}
 \end{proof}
 
-\subsection{Theorem: Minkowski Triangle Inequality}
+\section{Theorem: Minkowski Triangle Inequality}
 
 \begin{_thm}
 Given \(u,v\in \mathbb{R}^n\), then \(\|u+v\|\leq \|u\|+\|v\|\).
@@ -149,14 +163,14 @@ Given \(u,v\in \mathbb{R}^n\), then \(\|u+v\|\leq \|u\|+\|v\|\).
 \begin{proof}
 \begin{align*}
 \|u+v\|^2 &= \|u\|^2+2(u\cdot v)+\|v\|^2 \\
-&\leq \|u\|^2+2\|u\|\|v\|+\|v\|^2 \text{ by C-S inequality} \\
+&\leq \|u\|^2+2\|u\|\|v\|+\|v\|^2 \quad \text{ by C-S inequality} \\
 &= (\|u\|+\|v\|)^2
 \end{align*}
 So, \(\|u+v\|^2\leq (\|u\|+\|v\|)^2\).
 Take the square root and we are done.
 \end{proof}
 
-\subsection{Geometry with Vectors}
+\section{Geometry with Vectors}
 
 \begin{_def}
 The \textbf{distance} between vectors \(u,v\in \mathbb{R}^n\) is given by,
@@ -190,6 +204,415 @@ The \textbf{line} in $\mathbb{R}^n$ passing through a point $P=(b_1...b_n)$ and 
   \end{array} \right.\]
 \end{_def}
 
-\section{Algebra of Matrices}
+\chapter{Algebra of Matrices}
+
+\section{Introduction}
+
+A matrix with $n$ rows and $m$ columns is written as,
+
+\[A_{n\times m}=
+\begin{bmatrix}
+    a_{11} & \dots  & a_{1m} \\
+    \vdots & \ddots & \vdots \\
+    a_{n1} & \dots  & a_{nm}
+\end{bmatrix}
+\]
+
+Or,
+
+\[A_{n\times m}=[a_{ij}]\]
+
+Where $a_{ij}$ is the entry in row $i$ and column $j$.
+
+\section{Definitions and Properties of Matrices}
+
+\begin{_def}
+\textbf{Matrix Addition}
+\[A+B=[a_{ij}+b_{ij}] \quad \forall i=1...n, j=1...m\]
+\end{_def}
+
+\begin{_def}
+\textbf{Scalar Multiplication}
+\[ka=[ka_{ij}] \quad \forall i=1...n, j=1...m\]
+\end{_def}
+
+\begin{_def}
+\textbf{Zero Matrix}
+\[0=[0]\]
+\end{_def}
+
+\begin{_def}
+Given a matrix $A_{m\times p}$ and a matrix $B_{p\times n}$, \textbf{matrix multiplication} is defined as,
+\[AB=[c_{ij}] \quad c_{ij}=\sum\limits_{k=1}^p a_{ik}b_{kj}\]
+\end{_def}
+
+\begin{_def}
+Given a matrix $A$, its \textbf{transpose} is $A^T=[a_{ji}]$ where $A=[a_{ij}]$.
+\end{_def}
+
+\begin{_def}
+A \textbf{square matrix} has the same number of rows as it does columns, i.e. $A_{n\times n}$ is a square matrix.
+\end{_def}
+
+\begin{_def}
+Given a matrix $A=[a_{ij}]$ the elements in the \textbf{diagonal} are $[a_{11},...,a_{nn}]$.
+\end{_def}
+
+\begin{_def}
+The \textbf{trace} of a matrix $A$ is given by,
+\[tr(A)=a_{11}+...+a_{nn}\]
+\end{_def}
+
+\begin{_def}
+The \textbf{identity matrix} $I_n$ is the matrix such that for any $n$-square matrix $A$,
+\[AI=IA=A\]
+\end{_def}
+
+\begin{_def}
+The \textbf{Kronecker delta} is defined by,
+\[\delta_{ij}=\left\{ 
+  \begin{array}{l l}
+    0 & \quad \text{if } i\neq j\\
+    1 & \quad \text{if } i=j
+  \end{array} \right.\]
+\end{_def}
+
+\begin{_rem}
+Given the definitions for the identity matrix and the Kronecker delta, an alternative definition for the identity matrix is as follows,
+\[I=[\delta_{ij}]\]
+\end{_rem}
+
+\begin{_def}
+A matrix $A$ is \textbf{invertible} if there is a matrix $B$ such that $AB=BA=I$.
+\end{_def}
+
+\begin{_rem}
+In general, for any matrices $A$ and $B$, $AB\neq BA$.
+\end{_rem}
+
+\begin{_def}
+A matrix $D$ is \textbf{diagonal} if all the non-zero entries are in the diagonal.
+\[D=diaginal(d_1,...,d_n)\]
+\end{_def}
+
+\begin{_def}
+A matrix $A$ is \textbf{upper triangular} if,
+\[a_{ij}=0 \quad \forall i>j\]
+\end{_def}
+
+\section{Complex Numbers}
+
+The imaginary number $i$ is defined as $i=\sqrt{-1}$ or equivalently, $i^2=-1$.
+
+\begin{_def}
+A \textbf{complex number} $z$ is given by,
+\[z=a+bi \quad a,b\in \mathbb{R}\]
+Where $a$ is the real part and $b$ is the imaginary part.
+\end{_def}
+
+Real numbers are also complex numbers with no imaginary component, i.e. $a+0i=a$. \newline
+
+\textbf{Addition} for two complex numbers $z=a+bi$ and $w=c+di$ is given by,
+\[z+w=(a+c)+(b+d)i\]
+\textbf{Multiplication} for the same two complex numbers is given by,
+\begin{align*}
+z\cdot w &= (a+bi)(c+di) \\
+&= ac+adi+cbi-bd \\
+&= (ac-bd)+(ad+bc)i
+\end{align*}
+
+\begin{_def}
+The \textbf{conjugate} of $z=a+bi$ is $\bar{z}=a-bi$.
+\end{_def}
+
+\begin{_def}
+The \textbf{absolute value} or modulus of $z=a+bi$ is $|z|=\sqrt{a^2+b^2}$.
+\end{_def}
+
+\begin{ex}
+\[z^{-1}=\frac{1}{z}=\frac{1}{a+bi}\cdot\frac{a-bi}{a-bi}=\frac{a-bi}{a^2+b^2}\]
+\end{ex}
+
+Observe that the following properties are true for conjugates and absolute values,
+\begin{enumerate}
+ \item \[z\bar{z}=|z|^2=a^2+b^2\]
+ \item \[\bar{z\pm w}=\bar{z}\pm \bar{w}\]
+ \item \[\bar{zw}=\bar{z}\cdot \bar{w}\]
+ \item \[\bar{(\bar{z})}=z\]
+ \item $z$ is real iff $z=\bar{z}$
+ \item \[|zw|=|z||w|\]
+ \item \[|z+w|\leq |z|+|w|\]
+\end{enumerate}
+
+\chapter{Systems of Linear Equations}
+
+\section{Representing Linear Systems with Matrices}
+
+Given a system of linear equations of the form,
+
+\[\left\{ 
+  \begin{array}{c}
+    a_{11}x_1+...+a_{1m}x_n=b_1 \\
+    \vdots \\
+    a_{m1}x_1+...+a_{mn}x_n=b_m
+  \end{array} \right.\]
+
+\begin{itemize}
+ \item $x_1,...,x_m$ are the unknowns, and
+ \item $a_{ij}$ and $b_i$ are the constants.
+\end{itemize}
+
+The system can also be represented by matrices where,
+
+\begin{itemize}
+ \item $A=[a_{ij}]$ is the matrix of coefficients
+ \item $b=[b_i]$ is the column vector of constant
+ \item $M=[A|b]$ is the matrix that represents the system.
+\end{itemize}
+
+\begin{_def}
+A matrix $A$ is in \textbf{echelon form} if 
+\begin{enumerate}
+ \item all zero rows are at the bottom, and
+ \item each leading non-zero entry in a row is to the right of the leading non-zero entry in teh preceding row.
+\end{enumerate}
+\end{_def}
+
+\begin{ex}
+This matrix is in echelon form.
+The boxed entries are the \textbf{pivots}.
+
+\[A=
+\begin{bmatrix}
+ 0 & \boxed{2} & 3 & 4 & 1 & 0 & 6 \\
+ 0 & 0 & 0 & \boxed{2} & 1 & 2 & 1 \\
+ 0 & 0 & 0 & 0 & 0 & \boxed{1} & 1 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\end{ex}
+
+\begin{_def}
+A matrix is said to be in teh \textbf{row-reduced echelon form} if it is in the echelon form and,
+\begin{enumerate}
+ \item each pivot is equal to 1, and
+ \item each pivot is the only non-zero entry in its column
+\end{enumerate}
+\end{_def}
+
+\begin{ex}
+This matrix is in row-reduced echelon form.
+The boxed entries are the \textbf{pivots}.
+
+\[A=
+\begin{bmatrix}
+ 0 & \boxed{1} & 3 & 0 & 0 & 4 \\
+ 0 & 0 & 0 & \boxed{1} & 0 & -3 \\
+ 0 & 0 & 0 & 0 & \boxed{1} & 2 \\
+\end{bmatrix}
+\]
+\end{ex}
+
+\section{Elementary Row Operations}
+
+Suppose that $A$ is a matrix with rows $R_1,...,R_m$.
+The elementary row operations that can be performed on $A$ are as follows,
+
+\begin{enumerate}
+ \item Row interchange, $R_i\leftrightarrow R_j$
+ \item Row scaling, $kR_i\rightarrow R_i$
+ \item Row addition, $kR_i+R_j\rightarrow R_j$
+\end{enumerate}
+
+The method by which we find the (row-reduced) echelon form of a matrix is using the \textbf{Gaussian Elimination} algorithm. \newline
+
+Recall that every matrix is row equivalent to a unique matrix in the row-reduced echelon form.
+
+\begin{_def}
+The \textbf{rank} of a matrix $rank(A)$ is the number of pivots in the row-reduced echelon form.
+There are many other ways to define rank but they all have the same meaning.
+\end{_def}
+
+The method by which we find the inverse of a square matrix $A$ is as follows,
+
+Let $M=[A\mid I]$. 
+Find the row-reduced echelon form of $M$.
+If there is a zero row in the resulting matrix then $A$ is not invertible.
+Otherwise, $M\sim [I\mid B], \quad A^{-1}=B$.
+
+\begin{_thm}
+Let $A$ be a square matrix.
+The following conditions are equivalent,
+\begin{enumerate}
+ \item $A$ is invertible
+ \item the row-reduced echelon for of $A$ is $I$
+ \item the only solution to $Ax=0$ is $x=0$
+ \item the system $Ax=b$ has a solution for any choice of column $b$.
+\end{enumerate}
+\end{_thm}
+
+A partial proof is as follows,
+\begin{proof}
+$(1)\Rightarrow (3)$ There is a matrix $B$ such that $AB=I=BA$.
+
+Let $x$ be any solution of $Ax=[0]$.
+\begin{align*}
+BAx &= B[0] \\
+Ix &= [0] \\
+x &= [0]
+\end{align*}
+
+$(1)\Rightarrow (4)$ Fix a column $b$,
+\begin{align*}
+Ax &= b \\
+\Leftrightarrow \quad A^{-1}Ax &= A^{-1}b \\
+\Leftrightarrow \quad x &= A^{-1}b
+\end{align*}
+\end{proof}
+
+\begin{_def}
+A linear system $Ax=b$ is \textbf{homogeneous} if $b=0$.
+Otherwise, $Ax=b$ is said to be \textbf{non-homogeneous}.
+\end{_def}
+
+\begin{_def}
+A \textbf{particular solution} of $Ax=b$ is a vector $x$ such that $Ax=b$.
+The set of all particular solutions is called the \textbf{general solution} of the solution set.
+\end{_def}
+
+\begin{_def}
+A system $Ax=b$ is \textbf{consistent} if it has one or more solutions and it is said to be \textbf{inconsistent} if it has no solutions.
+\end{_def}
+
+\begin{_thm}
+Any system $Ax=b$ has:
+
+(i) an unique solution, 
+
+(ii) no solution, or
+
+(iii) an infinite number of solutions.
+\end{_thm}
+
+\section{Examples}
+
+\begin{ex}
+The system,
+\begin{align*}
+x+y+2z&=1 \\
+3x-y+z&=-1 \\
+-x+3y+4z&=1
+\end{align*}
+is equivalent to,
+\[
+\begin{amatrix}{3}
+   1 & 1 & 2 & 1 \\
+   3 & -1 & 1 & -1 \\
+   -1 & 3 & 4 & 1
+\end{amatrix}\sim
+\begin{amatrix}{3}
+   1 & 1 & 2 & 1 \\
+   0 & 4 & 5 & 4 \\
+   0 & 0 & 1 & -2
+\end{amatrix}\]
+\end{ex}
+
+\begin{ex}
+Back substitution:
+
+$z=-2$
+
+$4y+5z=4\Leftrightarrow y=\frac{7}{2}$
+
+$x+y+2z=1\Leftrightarrow x=\frac{3}{2}$
+
+\[\sim
+\begin{amatrix}{3}
+ 1 & 0 & 0 & \frac{3}{2} \\
+ 0 & 1 & 0 & \frac{7}{2} \\
+ 0 & 0 & 1 & -2
+\end{amatrix}
+\]
+\end{ex}
+
+\begin{ex}
+\begin{align*}
+-2x+3y+3z&=-9 \\
+3x-4y+z&=5 \\
+-5x+7y+2z&=-14
+\end{align*}
+
+\[\sim
+\begin{amatrix}{3}
+ -2 & 3 & 3 & -9 \\
+ 3 & -4 & 1 & 5 \\
+ -5 & 7 & 2 & -14
+\end{amatrix}\sim
+\begin{amatrix}{3}
+ 1 & -1 & 4 & -4 \\
+ 0 & 1 & 11 & -17 \\
+ 0 & 0 & 0 & 0
+\end{amatrix}
+\]
+
+So there are infinitely many solutions.
+
+Set $z=t$ since $z$ is a free variable, then back substitute.
+
+\[y=-17-11t\quad x=-21-15t\quad t\in \mathbb{R}\]
+
+So the solution space is,
+\[\begin{bmatrix}
+ x \\
+ y \\
+ z
+\end{bmatrix} =
+\begin{bmatrix}
+ -21 \\
+ -17 \\
+ 0
+\end{bmatrix} +t
+\begin{bmatrix}
+ -15 \\
+ -11 \\
+ 1
+\end{bmatrix}
+\]
+
+Where $(-21, -17, 0)$ is a particular solution and $(-15, -11, 1)$ is the set of basic solutions of the homogeneous system $Ax=0$.
+\end{ex}
+
+\begin{ex}
+\begin{align*}
+x+2y-z&=2 \\
+2x+5y-3z&=1 \\
+x+4y-3z&=3
+\end{align*}
+\[\begin{amatrix}{3}
+ 1 & 2 & -7 & 2 \\
+ 2 & 5 & -3 & 1 \\
+ 1 & 4 & -3 & 3
+\end{amatrix}\sim
+\begin{amatrix}{3}
+ 1 & 2 & -1 & 2 \\
+ 0 & 1 & -1 & -3 \\
+ 0 & 0 & 0 & -1
+\end{amatrix}
+\]
+
+There are no solutions possible for this system.
+\end{ex}
+
+\chapter{Vector Spaces}
+
+\section{Introduction}
+
+Adding two vectors in $\mathbb{R}^n$ produces a vector in $\mathbb{R}^n$.
+Similarly, multiplying by a scalar produces a vector in $\mathbb{R}^n$.
+These are some properties of a vector space, the following section is a formal list.
+
+\section{Basic Definitions}
+
+
 
 \end{document}
