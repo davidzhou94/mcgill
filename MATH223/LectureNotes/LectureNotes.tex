@@ -1,6 +1,8 @@
 \documentclass{report} 
 \usepackage{amsmath}
 \usepackage{amsthm,amssymb,graphicx}
+\usepackage{enumerate}
+\usepackage[bookmarks]{hyperref}
 \graphicspath{ {F:\repos\mcgill\MATH223\LectureNotes} }
 
 \newenvironment{amatrix}[1]{%
@@ -16,6 +18,8 @@
 \newtheorem{_def}{Definition}
 \newtheorem{_rem}{Remark}
 \newtheorem{ex}{Example}
+\newtheorem{_exc}{Exercise}
+\newtheorem{_prop}{Proposition}
 
 \begin{document} 
 \title{MATH 223} 
@@ -47,7 +51,7 @@ The midterm will be scheduled for the 7th week of class.
 
 \chapter{Vectors}
 
-\section{Vectors in \(\mathbb{R}^n\)}
+\section[Vectors in Rn]{Vectors in \(\mathbb{R}^n\)}
 
 \(\mathbb{R}^n\) is the set of all \(n\)-tuples of real numbers \(u=(a_1 ... a_n) \mid a\in \mathbb{R}\) where \(a\) are the \textbf{components} or \textbf{entries}.
 
@@ -613,6 +617,384 @@ These are some properties of a vector space, the following section is a formal l
 
 \section{Basic Definitions}
 
+\begin{_def}
 
+Let $V$ be a non-empty set with two operations,
+\begin{enumerate}[i]
+ \item Vector addition: this assigns to any $u,v\in V$ the sum $u+v\in V$.
+ \item Scalar multiplication: this assigns to any $u\in V$ and $k\in K$, a product $ku\in V$ where $k$ is a field.
+\end{enumerate}
+Then $V$ is called a \textbf{vector} space (over the field $K$) if the following axioms hold for any $u,v,w\in V$.
+\begin{itemize}
+ \item A1) $(u+v)+w=u+(v+w)$
+ \item A2) there is a vector in $V$ denoted by $0$ called the zero vector such that $v+0=v$ for any $v\in V$.
+ \item A3) for each $u\in V$, there is a vector in $V$ denoted $-u$, such that $u+(-u)=0$.
+ $-u$ is called the negative of $u$.
+ \item A4) $u+v=v+u$
+ \item A5) $k(u+v)=ku+kv$ for any scalar $k\in K$
+ \item A6) $(a+b)u=au+bu$ for any scalars $a,b\in K$
+ \item A7) $(ab)u=a(bu)$ for any scalars $a,b\in K$
+ \item A8) $1u=u$ for the unit scalar $k\in K$
+\end{itemize}
+\end{_def}
+
+\begin{_rem}
+A \textbf{field} $K$ is a mathematical object with nice properties, with $\mathbb{R}$ and $\mathbb{C}$ being two examples. From now on, we will take it to be $\mathbb{R}$ or $\mathbb{C}$.
+\end{_rem}
+
+\section{Examples of Vector Spaces}
+
+\begin{ex}
+These are some examples of vector spaces,
+\begin{enumerate}
+ \item $\mathbb{R}^n$
+ \item $\mathbb{C}^n$
+ \item The matrix space: $M_{m\times n}$
+ 
+ $M_{m\times n}$ denotes the set of all matrices with size $m$ rows, $n$ columns and real entries.
+ $M_{m\times n}(\mathbb{C})$ permits the entries to be complex.
+ The space of the real matrices are a subset of the space of complex matrices.
+ \item The polynomial space: $P(t)$
+ 
+ $P(t)$ denotes the set of all polynomials of the form,
+ \[P(t)=a_0+a_1t+...+a_nt^n \mid a_i\in \mathbb{R}\]
+ \item The function space: $F(x)$
+ 
+ Let $X$ be a non-empty set.
+ Let $F(x)$ denote the set of all functions of $X$ into $\mathbb{R}$.
+ Then $F(x)$ is a vector space (over $\mathbb{R}$) with respect to the following operations,
+ \begin{enumerate}[i]
+  \item vector addition: 
+  \[(f+g)(x)=f(x)+g(x)\mid \forall x\in X\]
+  \item scalar multiplication: for any $k\in K, f\in F(x)$
+  \[(kf)(x)=kf(x) \mid \forall x\in X\]
+  \item zero function: $\underline{0}(x)=0$ 
+ \end{enumerate}
+\end{enumerate}
+\end{ex}
+
+\begin{_exc}
+Consider the set $\mathbb{R}^2$ with the usual scalar multiplication, but with the following vector addition:
+\[(a,b)\diamond (c,d)=(a+d,b+c)\]
+
+Is this a vector space?
+
+No because axiom 4 does not hold.
+
+\[(1,2)\diamond (-1,1)=(2,1)\]
+\[(-1,1)\diamond (1,2)=(1,2)\]
+\end{_exc}
+
+\section{Vector Subspaces}
+
+\begin{_def}
+Let $V$ be a vector space and $W$ be a subset of $V$.
+Then $W$ is a \textbf{subspace} of $V$ if $W$ itself is a vector space with the operations of vector addition and scalar multiplication of $V$.
+\end{_def}
+
+\begin{ex}
+$P(t)$ is a subspace of $F(\mathbb{R})$
+\end{ex}
+
+The next theorem provides a simple criteria to show that a subset $W$ of $V$ is a subspace.
+
+\begin{_thm}
+Suppose that $W$ is a subset of $V$, with $V$ being a vector space. Then $W$ is a subspace if the following two conditions hold:
+\begin{enumerate}[i]
+ \item The zero vector $0$ belongs to $W$.
+ \item For every two vectors $u,v\in W$ and $k\in R$
+ \begin{itemize}
+  \item $u+v\in W$ (closed under vector addition)
+  \item $ku\in W$ (closed under scalar multiplication)
+ \end{itemize}
+\end{enumerate}
+\end{_thm}
+
+\begin{proof}
+By (i), $W$ is non-empty.
+
+By (ii), the operations of vector addition and scalar multiplication are well defined.
+
+The it remains to prove each of the axioms of a vector space.
+
+A1, 4, 5, 6, 7, and 8 hold in $W$ because they hold in $V$.
+
+A2 is true by (i).
+
+A3: Let $v\in W$.
+We know that $-v\in V$ with $v+(-v)=0$ by A3 for the vector space $V$.
+But $W$ is closed under scalar multiplication (by (ii)) and so $v\in W$ and we are done.
+\end{proof}
+
+\section{Examples of Vector Subspaces}
+
+\begin{ex}
+These are some examples of vector subspaces,
+\begin{enumerate}
+ \item ${0}, V$ are subspaces of $V$.
+ These are called the trivial subspaces of $V$.
+ \item Subspaces of $\mathbb{R}^3$
+ \begin{enumerate}[i]
+  \item Line through the origin is a subspace.
+  \item Planes through the origin.
+ \end{enumerate}
+ \item Subspaces of $P(t)$
+ \begin{enumerate}[i]
+  \item $P_m(t)=\{p(\cdot)\in P(t); degree(p(\cdot))\leq m\}$
+  \item $Q(t)$ is the set of polynomials with only even powers
+ \end{enumerate}
+ \item Subspaces of matrices $M_{m\times n}$
+ \begin{enumerate}[i]
+  \item $W_1=\{A\in M_{m\times n}; A \text{ is diagonal}\}$
+  \item $W_2=\{A\in M+{m\times n}; A=A^T\}$
+ \end{enumerate}
+ \item Subspaces of $F(\mathbb{R})$
+ \begin{enumerate}[i]
+  \item $C(\mathbb{R})=\{f\in F(\mathbb{R}); f \text{ is continuous}\}$
+  \item $C'(\mathbb{R})=\{f\in F(\mathbb{R}); f \text{ is differentiable}\}$
+ \end{enumerate}
+\end{enumerate}
+\end{ex}
+
+\section{More on Vector Spaces}
+
+\begin{_def}
+Let $A\in M_{m\times n}$. The nullspace of $A$ is $N(A)$ which is given by,
+\[N(A)=\{x\in \mathbb{R}^n \mid Ax=0\}\]
+\end{_def}
+
+\begin{_prop}
+$N(A)$ is a subspace of $\mathbb{R}^n$
+\end{_prop}
+\begin{proof}
+Clearly $N(A)$ is a subset of $\mathbb{R}^n$
+\begin{enumerate}[i]
+ \item $0\in N(A)$. True because $A0=0$.
+ \item Let $u,v\in N(A)$, and $a,b\in \mathbb{R}$.
+ We want to show that $au+bv\in N(A)$, which is the same as $A(au+bv)=0$
+ \begin{align*}
+ A(au+bv) &= A(au)+a(bv) \\
+ &= a(Au)+b(Av) \quad \text{Since } u,v\in N(A) \text{, then } Au=0, Av=0 \\
+ &= a0+b0 \\
+ &= 0
+ \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{_rem}
+The solution set of a non-homogeneous system $\{x\in \mathbb{R}^n \mid Ax=b\}$ where $b\neq 0$ is not a subspace because the zero vector is not present.
+\end{_rem}
+
+\begin{_thm}
+Let $U$ and $W$ be subspaces of a vector space $V$.
+Then $U\cap W$ is also a subspace.
+\end{_thm}
+
+\begin{proof}
+Since $U\subseteq V$ and $W\subseteq V$ ($U$ and $W$ are subspaces),
+\[U\cap W\subseteq V\]
+\begin{enumerate}[i]
+ \item So, $0\in V$ and $0\in W$, therefore $0\in U\cap W$
+ \item Let $u,v\in U\cap W$ and $a,b\in \mathbb{R}$
+ \begin{align*}
+  u,v\in U\cap W &\Rightarrow \left\{ 
+  \begin{array}{l}
+    u,v\in V \\
+    u,v\in W
+  \end{array} \right. \\
+  &\Rightarrow \left\{ 
+  \begin{array}{l}
+    au+bv\in V \\
+    au+bv\in W
+  \end{array} \right. \quad \text{both } U \text{ and } W \text{are subspaces} \\
+  &\Rightarrow au+bv\in U \cap W
+ \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{_rem}
+In general, if $U$ and $W$ are subspaces, $U\cup W$ is \textbf{not} a subspace.
+An example would be two lines through the origin in $\mathbb{R}^3$.
+\end{_rem}
+
+\section{Linear Combinations}
+
+Observe that $au+bv$ is a linear combination.
+
+\begin{_def}
+Let $U$ be a vector space.
+A vector $v\in V$ is a \textbf{linear combination} of $u_1,...,u_m$ in $V$ if there exists scalars $a_1,...,a_m$ so that,
+\[v=a_1u_1+...+a_mu_m\]
+\end{_def}
+
+\begin{ex}
+The following is an example of linear combinations in $\mathbb{R}^3$.
+
+Is $v=(1,5,5)\in \mathbb{R}^3$ a linear combination of $u_1=(1,2,3)$, $u_2=(1,0,1)$, $u_3=(0,1,0)$?
+
+That is the same as asking, are there constants $a, b, c\in \mathbb{R}$ such that,
+\[v=au_1+bu_2+cu_3\]
+
+That is, are there $a,b,c\in \mathbb{R}$ such that,
+
+\[\begin{bmatrix}
+1 \\ 5 \\ 5
+\end{bmatrix}=a\begin{bmatrix}
+1 \\ 2 \\ 3
+\end{bmatrix}+b\begin{bmatrix}
+1 \\ 0 \\ 1
+\end{bmatrix}+c\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}\]
+
+Yes. Take $a=2, b=-1, c=1$.
+\end{ex}
+
+\begin{_def}
+Let $A\in M_{m\times n}$.
+The column space of $A$ is $C(A)$ which consists of all linear combinations of the columns of $A$.
+Alternatively,
+\[C(A)=\{Ax\mid x\in \mathbb{R}^n\}\]
+\end{_def}
+
+\begin{_prop}
+The linear system $Ax=b$ is consistent iff $b\in C(A)$.
+\end{_prop}
+
+\begin{ex}
+The following is an example of linear combinations in $P(t)$.
+
+Is the polynomial $P(t)=t^2+5t+5$ a linear combination of the polynomials $P_1(t)=t^2+2t+3, P_2(t)=t^2+1, P_3(t)=t$?
+
+Equivalently, are there scalars $a,b,c\in \mathbb{R}$ such that,
+\[p(\cdot)=ap_1(\cdot)+bp_2(\cdot)+cp_3(\cdot)\]
+
+There are two ways of solving this,
+\begin{enumerate}
+ \item Matching coefficients:
+ \[t^2+5t+5=(a+b)t^2+(2a+c)t+3a+b\]
+ \[\left\{ 
+  \begin{array}{l}
+    1 = a+b \\
+    5=2a+c \\
+    5=3a+b
+  \end{array} \right. \Leftrightarrow
+  \begin{bmatrix}
+  1 & 1 & 0 \\
+  2 & 0 & 1 \\
+  3 & 1 & 0
+  \end{bmatrix}
+  \begin{bmatrix}
+  a \\ b \\ c
+  \end{bmatrix}=
+  \begin{bmatrix}
+  1 \\ 5 \\ 5
+  \end{bmatrix}\]
+ \item "Trial approach":
+ We set $t$ in $P(t)$ equal to the three distinct values and each one provides a different equation,
+ \[\begin{array}{l l}
+ t=0 & 5=3a+b \\
+ t=1 & 11=6a+2b+c \\
+ t=-1 & 1=2a+2b-c
+ \end{array}\]
+ Then solve for $a, b, c$.
+\end{enumerate}
+\end{ex}
+
+\begin{ex} The following are two examples of subspaces of $\mathbb{R}^3$
+\begin{enumerate}
+ \item A line with direction $(1,2,3)$ through the origin,
+ \[\{t\begin{bmatrix}
+ 1 \\ 2 \\ 3
+ \end{bmatrix} \mid t\in \mathbb{R} \}\]
+ \item A plane through the origin,
+ \begin{align*}
+ \{(x,y,z)\in \mathbb{R}^3\mid z=0\}
+ &=\{t(1,0,0)+s(0,1,0)\mid t,s\in \mathbb{R}\} \\
+ &=\{(t,s,0)\mid t,s\in \mathbb{R}\}
+ \end{align*}
+
+\end{enumerate}
+\end{ex}
+
+\section{The Span of a Vector Space}
+
+\begin{_def}
+Let $u_1,...,u_m$ be vectors in $V$.
+The set of all linear combinations of $u_1,...,u_m$ is called the \textbf{span} of $u_1,...,u_m$ and is denoted by $span\{u_1,...,u_m\}$.
+\[span\{u_1,...,u_m\}=\{t_1u_1+...+t_mu_m\mid t_1,...,t_m\in \mathbb{R}\}\]
+\end{_def}
+
+\begin{_def}
+The vectors $u_1,...,u_m\in V$ are said to span $V$ or to form a \textbf{spanning set} of $V$ if,
+\[span\{u_1,...,u_m\}=V\]
+\end{_def}
+
+The following are the properties of spans.
+\begin{itemize}
+ \item If $span\{u_1,...,u_m\}=V$, then for any $v\in V$, $span\{v,u_1,...,u_m\}=V$.
+ \item If $span\{0,u_1,...,u_m\}=V$, then $span\{u_1,...,u_m\}=V$.
+ \item If $span\{u_1,...,u_m\}=V$ and $u_k$ is a linear combination of $u_1,...,u_{k-1},u_{k+1},...,u_m$ then $span\{u_1,...,u_{k-1},u_{k+1},...,u_m\}=V$.
+\end{itemize}
+
+\begin{_prop}
+Let $u_1,...,u_m$ be vectors in $V$.
+Then $span\{u_1,...,u_m\}$ is a subspace.
+\end{_prop}
+
+\begin{proof}
+Clearly $span\{u_1,...,u_m\}\subseteq V$.
+
+We know $0\in span\{u_1,...,u_m\}$ since,
+\[0=0u_1+...+0u_m\in span\{u_1,...,u_m\}\]
+Take any $u,v\in span\{u_1,...,u_m\}$ and $a,b\in \mathbb{R}$.
+\[u=a_1u_1+...+a_mu_m \quad a_1,...,a_m\in\mathbb{R}\text{ since } u\in span\{u_1,...,u_m\}\]
+Likewise,
+\[v=b_1u_1+...+b_mu_m \quad b_1,...,b_m\in\mathbb{R}\]
+So,
+\begin{align*}
+au+bv&=aa_1u_1+...+aa_mu_m+bb_1u_1+...+bb_mu_m \\
+&=(aa_1+bb_1)u_1+...+(aa_m+bb_m)u_m
+\end{align*}
+Which shows that $au+bv$ is a linear combination of $u_1,....u_m$ with scalars $aa_1+bb_1,...,aa_m+bb_m$.
+\end{proof}
+
+\begin{_exc}
+$W=\{(x,y,z)\in \mathbb{R}^3\mid x=2y=3z\}$
+
+Clearly, $W\subseteq \mathbb{R}^3$
+
+$(0,0,0)\in W$ is true because $0=2(0)=3(0)$.
+
+$u,v\in W\quad a,b\in \mathbb{R}$
+
+$u=(u_1,u_2,u_3)$ with (1) $u_1=2u_2$ and (2) $2u_2=3u_3$
+
+$v=(v_1,v_2,v_3)$ with (3) $v_1=2v_2$ and (4) $2v_2=3v_3$
+
+\begin{align*}
+z=(z_1,z_2,z_3)&=au+bv \\
+&=(au_1+bv_1,au_2+bv_2,au_3+bv_3)
+\end{align*}
+
+We want to show $z\in W$, so,
+\begin{align*}
+z_1&=2z_2=3z_3 \\
+z_1&=au_1+bv_1 \\
+&=a(2u_2)+b(2v_2) \quad \text{by (1) and (3)}\\
+&=2(au_2+bv_2) \\
+&=2z_2 \\
+&=a(3u_3)+b(3v_3) \\
+&=3(au_3+bv_3) \\
+&=3z_3
+\end{align*}
+So, $z_1=2z_2=3z_3$.
+
+It is also a line through the origin,
+\[x=2y=3z\Rightarrow\]
+\[\{t\begin{bmatrix}
+6 \\ 3 \\ 2
+\end{bmatrix}\mid t\in \mathbb{R}\}=span\{(6,3,2)\}\]
+\end{_exc}
 
 \end{document}
