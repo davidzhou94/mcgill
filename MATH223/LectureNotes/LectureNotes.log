@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.20)  17 JAN 2015 19:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.20)  20 JAN 2015 20:51
 entering extended mode
 **LectureNotes.tex
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.tex
@@ -363,24 +363,24 @@ Chapter 4.
 ] [13]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 707.
- [14] [15] [16] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1000.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1000.
+ [14] [15] [16] [17] [18] [19] [20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1201.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1201.
 
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1000.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1000.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1201.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1201.
 
 Package rerunfilecheck Info: File `LectureNotes.out' has not changed.
-(rerunfilecheck)             Checksum: 5563726F38BB78B6E4C033CABAAE7E2E;1722.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1000.
+(rerunfilecheck)             Checksum: A0915A55814674881EA6C851AA833E80;1858.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1201.
  ) 
 Here is how much of TeX's memory you used:
- 6194 strings out of 493921
- 87169 string characters out of 3144876
- 171040 words of memory out of 3000000
- 9266 multiletter control sequences out of 15000+200000
+ 6228 strings out of 493921
+ 87419 string characters out of 3144876
+ 171144 words of memory out of 3000000
+ 9268 multiletter control sequences out of 15000+200000
  13702 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,14n,28p,246b,584s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -397,9 +397,9 @@ es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on LectureNotes.pdf (19 pages, 238905 bytes).
+Output written on LectureNotes.pdf (22 pages, 252909 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 170 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 455 PDF objects out of 1000 (max. 8388607)
+ 202 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

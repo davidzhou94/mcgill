@@ -997,4 +997,205 @@ It is also a line through the origin,
 \end{bmatrix}\mid t\in \mathbb{R}\}=span\{(6,3,2)\}\]
 \end{_exc}
 
+\begin{_def}
+The \textbf{span of a set} $S$ is the set of all linear combinations of vectors in $S$.
+If $S\neq 0$, $span(S)=\{0\}$.
+\end{_def}
+
+\begin{_thm}
+Let $S$ be a subset of the vector space $V$.
+Then,
+\begin{enumerate}[i)]
+ \item $span(S)$ is a subspace of $V$.
+ \item if $W$ is a subspace of $V$ such that $S\subseteq W$, then $span(S)\subseteq W$.
+\end{enumerate}
+\end{_thm}
+
+*Proof here*
+
+\begin{_def}
+Let $A\in M_{m\times n}$.
+The \textbf{row space} of $A$, written as $rowsp(A)$, is the set of all linear combinations of rows of $A$.
+\[rowsp(A)=col(A^T)\]
+The notation for column space can also be $colsp(A^T)$.
+$A\in M_{m\times n}$.
+$rowsp(A)$ is a subspace of $\mathbb{R}^n$.
+$col(A)$ is a subspace of $\mathbb{R}^m$.
+\end{_def}
+
+\begin{ex}
+Two matrices are row equivalent if you can get from one to the other with only elementary row operations.
+\[A=
+\begin{bmatrix}
+1 & 2 & -1 & 3 \\
+2 & 4 & -1 & 5 \\
+3 & 6 & -2 & 8
+\end{bmatrix}\sim
+\begin{bmatrix}
+1 & 2 & -1 & 3 \\
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0
+\end{bmatrix}=B
+\]
+The following is true for $A$ and $B$,
+\begin{itemize}
+ \item $rowsp(A)=rowsp(B)$
+ \item $rowsp(A)=span{(1,2,-1,3),(2,4,-1,5),(3,6,-2,8)}$
+ \item $rowsp(B)=span{(1,2,-1,3),(0,0,1,-1)}$
+\end{itemize}
+Observe that any basis of a subspace is not unique.
+\end{ex}
+
+\begin{_thm}
+Row equivalent matrices have the same row space.
+\end{_thm}
+
+\section{Linear Dependence and Independence}
+
+\begin{_def}
+The vectors $v_1,...,v_n$ are \textbf{linearly independent} if the following condition is satisfied,
+\[\text{if }a_1v_1+...+a_nv_n=0\text{ , then }a_1=...=a_n=0\]
+The vectors $v_1,...,v_n$ are \textbf{linearly dependent} if they are not linearly independent.
+\end{_def}
+
+\begin{_rem}
+Consider the vector equation,
+\[x_1v_1+...+x_nv_n=0\]
+where $x_1,...,x_n$ are unknown scalars.
+If the only solution is $(0,..,0)$, then the vectors are linearly independent.
+Otherwise they are linearly dependent.
+\end{_rem}
+
+\begin{ex}
+The following is an example of linear dependence in $\mathbb{R}^3$.
+
+Geometrically, linearly dependent vectors run in the same direction.
+\begin{enumerate}[i)]
+ \item Two vectors in $\mathbb{R}^3$ are linearly dependent if they lie on the same line.
+ i.e., $k\in \mathbb{R}, k\neq 0$
+ \[v_2=kv_1 \Leftrightarrow kv_1-v_2=0\]
+ \item Three vectors in $\mathbb{R}^3$ are linearly dependent if they lie on the same plane.
+ i.e., $a_1,a_2\in \mathbb{R}, a_1,a_2\neq 0$
+ \[v_3=a_1v_1+a_2v_2 \Leftrightarrow a_1v_1+a_2v_2-v_3=0\]
+\end{enumerate}
+\end{ex}
+
+\begin{_def}
+An \textbf{infinite set of vectors} $S$ is linearly dependent if there exist vectors $v_1,...,v_n\in S$ that are linearly dependent.
+\end{_def}
+
+\begin{_prop}
+Let $V$ be a vector space.
+\begin{enumerate}[i)]
+ \item If $v\neq 0, \{v\}$ is linearly independent.
+ \item No independent set of vectors contains the zero vector.
+ Any non-zero scalar multiplied by the zero vector will still yield the zero vector.
+ \item \underline{Two} vectors are linearly dependent iff one of them is a multiple of the others.
+ Let $v_1, v_2$ be linearly dependent and $a_1\neq 0$.
+ \begin{align*}
+ &a_1v_1+a_2v_2=0 \\
+ \Rightarrow & v_1+\frac{a_2}{a_1}v_2=0 \\
+ \Leftrightarrow & v_1=\frac{-a_2}{a_1}v_2
+ \end{align*}
+ \item No independent set can contain two vectors that are multiples of each other.
+\end{enumerate}
+\end{_prop}
+
+\begin{_exc}
+Show that ${1+t,3t+t^2,2+t-t^2}$ is linearly independent in $P_2(t)$.
+
+Suppose,
+\[a(1+t)+b(3t+t^2)+c(2+t-t^2)=0\quad \forall t\in \mathbb{R}\]
+We want to show $a=b=c=0$.
+
+Substitute three different values for $t$ to obtain three equations, then solve.
+\begin{align*}
+t=0\quad & a+b(0)+2(c)=0\Leftrightarrow a+2c=0\\
+t=-1\quad & -2b=0\Leftrightarrow b=0\\
+t=1\quad & 2a+0+2c=0\Leftrightarrow 2a+2c=0\quad \text{zero term from }t=-1
+\end{align*}
+So, $a+2c=0$ (1) and $2a+2c=0$ (2).
+(2)$-$(1) gives $a=0$.
+
+And we are done.
+
+The alternate method is to match coefficients and solve that system as in the example in 4.7.
+\end{_exc}
+
+\begin{_prop}
+The vectors $v_1,...,v_n$ are linearly dependent iff one of them is a linear combination of another.
+\end{_prop}
+
+\begin{proof}
+($\Rightarrow$)
+
+The vectors are linearly dependent.
+Then, $\forall a_1,...,a_n \exists a_i\neq 0$ such that $a_1v_1+...+a_nv_n=0$.
+
+Say $a_k\neq 0$.
+\begin{align*}
+& a_1v_1+...+a_nv_n=0 \\
+\Leftrightarrow &\frac{a_1}{a_k}v_1+...+\frac{a_{k-1}}{a_k}+v_{k-1}+v_k+\frac{a_{k+1}}{a_k}v_{k+1}+...+\frac{a_n}{a_k}v_n \\
+\Leftrightarrow &v_k=-\frac{a_1}{a_k}v_1-...-\frac{a_{k-1}}{a_k}-v_{k-1}-\frac{a_{k+1}}{a_k}v_{k+1}-...-\frac{a_n}{a_k}v_n
+\end{align*}
+Observe that $v_k$ can be any vector including the zero vector.
+
+($\Leftarrow$)
+
+Say $v_i$ is a linear combination of the other vectors.
+Then,
+\begin{align*}
+& v_i=b_1v_1+...+b_{i-1}v_{i-1}+b_{i+1}v_{i+1}+...+b_nv_n \\
+\Leftrightarrow & 0=b_1v_1+...+b_{i-1}v_{i-1}-v_i+b_{i+1}v_{i+1}+...+b_nv_n
+\end{align*}
+So, the scalar on $v_i$ is $-1$ which is not zero.
+
+And we are done.
+\end{proof}
+
+\section{Basis}
+
+\begin{_def}
+A set $B=\{u_1,...,u_n\}$ of vectors in $V$ is a \textbf{basis} of $V$ if two conditions are satisfied,
+\begin{enumerate}[i)]
+ \item $B$ is a linearly independent set
+ \item $span(B)=V$
+\end{enumerate}
+\end{_def}
+
+\begin{ex}
+The following are examples of basis,
+\begin{enumerate}[1)]
+ \item $\mathbb{R}^n$
+ \[e_1=(1,0,...,0), e_2=(0,1,0,...,0), e_n=(0,...,0,1)\]
+ $\{e_1,...,e_n\}$ is a basis for $\mathbb{R}^n$.
+
+ $(1,2,3)=e_1+2e_2+3e_3$. This is the canonical or standard basis.
+ \item $P_m(t)$
+ \[\{1,t,t^2,...,t^m\}\]
+ \item $M_{m\times n}$
+ For $M_{2\times 3}$ it is,
+ \[
+ \begin{bmatrix}
+ 1&0&0\\0&0&0
+ \end{bmatrix},
+ \begin{bmatrix}
+ 0&1&0\\0&0&0
+ \end{bmatrix},
+ \begin{bmatrix}
+ 0&0&1\\0&0&0
+ \end{bmatrix}\]
+ \[
+ \begin{bmatrix}
+ 0&0&0\\1&0&0
+ \end{bmatrix},
+ \begin{bmatrix}
+ 0&0&0\\0&1&0
+ \end{bmatrix},
+ \begin{bmatrix}
+ 0&0&0\\0&0&1
+ \end{bmatrix}\]
+\end{enumerate}
+\end{ex}
+
 \end{document}
