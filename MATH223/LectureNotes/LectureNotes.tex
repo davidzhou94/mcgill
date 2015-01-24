@@ -20,6 +20,7 @@
 \newtheorem{ex}{Example}
 \newtheorem{_exc}{Exercise}
 \newtheorem{_prop}{Proposition}
+\newtheorem{_lem}{Proposition}
 
 \begin{document} 
 \title{MATH 223} 
@@ -1013,6 +1014,8 @@ Then,
 
 *Proof here*
 
+\section{The Row Space of a Matrix}
+
 \begin{_def}
 Let $A\in M_{m\times n}$.
 The \textbf{row space} of $A$, written as $rowsp(A)$, is the set of all linear combinations of rows of $A$.
@@ -1094,8 +1097,8 @@ Let $V$ be a vector space.
  Let $v_1, v_2$ be linearly dependent and $a_1\neq 0$.
  \begin{align*}
  &a_1v_1+a_2v_2=0 \\
- \Rightarrow & v_1+\frac{a_2}{a_1}v_2=0 \\
- \Leftrightarrow & v_1=\frac{-a_2}{a_1}v_2
+ \Rightarrow \quad & v_1+\frac{a_2}{a_1}v_2=0 \\
+ \Leftrightarrow \quad & v_1=\frac{-a_2}{a_1}v_2
  \end{align*}
  \item No independent set can contain two vectors that are multiples of each other.
 \end{enumerate}
@@ -1135,8 +1138,8 @@ Then, $\forall a_1,...,a_n \exists a_i\neq 0$ such that $a_1v_1+...+a_nv_n=0$.
 Say $a_k\neq 0$.
 \begin{align*}
 & a_1v_1+...+a_nv_n=0 \\
-\Leftrightarrow &\frac{a_1}{a_k}v_1+...+\frac{a_{k-1}}{a_k}+v_{k-1}+v_k+\frac{a_{k+1}}{a_k}v_{k+1}+...+\frac{a_n}{a_k}v_n \\
-\Leftrightarrow &v_k=-\frac{a_1}{a_k}v_1-...-\frac{a_{k-1}}{a_k}-v_{k-1}-\frac{a_{k+1}}{a_k}v_{k+1}-...-\frac{a_n}{a_k}v_n
+\Leftrightarrow \quad &\frac{a_1}{a_k}v_1+...+\frac{a_{k-1}}{a_k}+v_{k-1}+v_k+\frac{a_{k+1}}{a_k}v_{k+1}+...+\frac{a_n}{a_k}v_n \\
+\Leftrightarrow \quad &v_k=-\frac{a_1}{a_k}v_1-...-\frac{a_{k-1}}{a_k}-v_{k-1}-\frac{a_{k+1}}{a_k}v_{k+1}-...-\frac{a_n}{a_k}v_n
 \end{align*}
 Observe that $v_k$ can be any vector including the zero vector.
 
@@ -1146,7 +1149,7 @@ Say $v_i$ is a linear combination of the other vectors.
 Then,
 \begin{align*}
 & v_i=b_1v_1+...+b_{i-1}v_{i-1}+b_{i+1}v_{i+1}+...+b_nv_n \\
-\Leftrightarrow & 0=b_1v_1+...+b_{i-1}v_{i-1}-v_i+b_{i+1}v_{i+1}+...+b_nv_n
+\Leftrightarrow \quad & 0=b_1v_1+...+b_{i-1}v_{i-1}-v_i+b_{i+1}v_{i+1}+...+b_nv_n
 \end{align*}
 So, the scalar on $v_i$ is $-1$ which is not zero.
 
@@ -1197,5 +1200,180 @@ The following are examples of basis,
  \end{bmatrix}\]
 \end{enumerate}
 \end{ex}
+
+Observe that a basis can also be the minimum span of a vector space.
+
+\begin{ex}
+\[A=
+\begin{bmatrix}
+1 & 2 & 0 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+
+$\{R_1, R_2, R_3\}$ is linearly independent as none of the rows are linear combinations of the others.
+
+Observe that $R_1, R_2, R_3$ spans the rowspace of $A$.
+\end{ex}
+
+\begin{_thm}
+The non-zero rows of a matrix in echelon form are linearly independent and form a basis for the row space.
+\end{_thm}
+
+\begin{_prop}
+A set $B=\{v_1,...,v_n\}$ is a basis of $V$ iff every vector $v\in V$ can be uniquely written as a linear combination of $v_1,...,v_n$.
+\end{_prop}
+
+\begin{proof} ($\Rightarrow$)
+
+Suppose $v=a_1v_1+...+a_nv_n\quad a_1,...,a_n\in \mathbb{R}$ and $v=b_1v_1+...+b_nv_n\quad b_1,...,b_n\in \mathbb{R}$.
+
+We want to show that $a_i=b_i\quad \forall i=1...n$.
+
+We have,
+\begin{align*}
+& a_1v_1+...+a_nv_n=b_1v_1+...+b_nv_n \\
+\Leftrightarrow \quad & 0=(a_1-b_1)v_1+...+(a_n-b_n)v_n
+\end{align*}
+
+Since $\{v_1,...,v_n\}$ is linearly independent,
+\begin{align*}
+& a_1-b_1=0,...,a_n-b_n=0 \\
+\Leftrightarrow \quad & a_1=b_1,...,a_n=b_n
+\end{align*}
+
+($\Leftarrow$)
+
+Suppose $a_1v_1+...+a_nv_n=0$. 
+We have $a_1,...,a_n\in \mathbb{R}$.
+To show that $B$ is linearly independent, we must show $a_1=...=a_n=0$,
+\[0=0(v_1)+...+0(v_n)\]
+
+We assumed the linear combination is unique,
+\[a_1=...=a_n=0\]
+
+We assumed every vector can be written as a linear combination.
+$B$ spans $V$ by the assumption.
+
+And we are done.
+\end{proof}
+
+\section{Coordinates}
+
+\begin{_def}
+Let $V$ be a vector space and $B=\{v_1,...,v_n\}$ a basis of $V$.
+Then for any $v\in V$,
+\[v=a_1v_1+...+a_nv_n\]
+where the $a_1,...,a_n$ are unique for $v$.
+
+We call these scalars the \textbf{coordinates} of $v$ in the basis $B$ and they form a vector $[a_1,...,a_n]$ called coordinate vectors of $v$ relative to $B$ and denoted by $[v]_B$.
+\end{_def}
+
+\begin{ex}
+${t+1, t-1, (t-1)^2}$ form a basis of $P_2(t)$.
+This can be written as :
+\[P(t)=(t+1)-(t-1)+(t-1)^2=t^2-2+2\]
+or as coordinates: $[P(\cdot)]_B=[1,-1,1]$.
+\end{ex}
+
+\section{Dimension}
+
+Next we will give a series of auxiliary lemmas and propositions to show that the size of any two basis for a vector space has the same number of vectors.
+
+\begin{_prop}
+Let $V$ be a vector space and $S=\{v_1+...+v_n\}$ be a spanning set of $V$.
+Then,
+\begin{enumerate}[i)]
+ \item if $w\in V$, $\{w,v_1,...,v_n\}$ is linearly dependent and spans $V$.
+ \item if $v_i$ is a linear combination of the other vectors, $S$ without $v_i$ still spans $V$.
+\end{enumerate}
+\end{_prop}
+
+\begin{_lem}
+Suppose $\{v_1,...,v_k\}$ is linearly dependent and all the vectors are non-zero.
+Then one of the vectors is a linear combination of the preceding vectors.
+\end{_lem}
+\begin{proof}
+Then there are scalars, not all zero such that,
+\[a_1v_1+...+a_nv_n=0 \quad \text{where } a_1,...,a_k\in\mathbb{R}\]
+
+Let $i$ be the largest index such that $a_i\neq 0$.
+We claim $i>1$.
+If $i=1$, then $a_1v_1=0$, which is a contradiction since $v_1 \neq 0$.
+\begin{align*}
+\Rightarrow \quad & a_1v_1+...+a_iv_i=0 \\
+\Leftrightarrow \quad & v_i=-\frac{a_1}{a_2}-...-\frac{a_{i-1}}{a_i}v_{i-1}
+\end{align*}
+\end{proof}
+
+\begin{_lem} \underline{"Replacement Lemma".}
+
+Suppose $\{v_1,...,v_n\}$ spans $V$ and $\{w_1,...,w_m\}$ is linearly independent.
+Then $m\leq n$ and $V$ is spanned by a set of the form ,
+\[\{w_1,...,w_m,v_{i_1},...,v_{i_{n-m}}\}\]
+Thus any $n+1$ or more vectors in $V$ are linearly dependent.
+\end{_lem}
+
+\begin{proof} (General idea)
+In $span\{v_1,...,v_n\}=V$, we add $w_1$.
+$span\{w_1,v_1,...,v_n\}=V$ but it is now linearly dependent.
+Assume $v_1,...,v_n$ are all non-zero.
+
+By proposition and lemma from above, we can remove $v_i$ so that
+\[span\{w_1,v_1,...,v_{i-1},v_{i+1},...,v_n\}=V\]
+Repeat the above steps when adding $w_2$ and removing $v_k$ and we get,
+\[span\{w_1,w_2,v_1,...,v_{k-1},v_{k+1},...,v_{i-1},v_{i+1},...,v_n\}=V\]
+
+If $m\leq n$,
+\[span\{w_1,...,w_m,v_{i_1},...,v_{i_{n-m}}\}=V\]
+
+Suppose $m>n$,
+\[span\{w_1,...,w_n\}=V\]
+If we add $w_{n+1}$, then $span\{w_1,...,w_n,w_{n+1}\}=V$ and is linearly dependent.
+But this is a contradiction, $w_1,...,w_m$ were all linearly independent.
+The only possible case is then $m\leq n$.
+\end{proof}
+
+\begin{_rem}
+The Replacement Lemma tells us that the size of any spanning set is at least as big as the size of any linearly independent set.
+\end{_rem}
+
+The preceding lemmas and propositions in this section were auxiliary to proving the following theorem.
+
+\begin{_thm}
+Let $\{u_1,...,u_m\}$ and $\{v_1,...,v_m\}$ be basis for $V$.
+Then $m=n$.
+\end{_thm}
+
+\begin{proof}
+The proof is relatively simple as we have the Replacement Lemma.
+
+$\{u_1,...,u_m\}$ is (1) linearly independent and (2) spans $V$.
+
+$\{v_1,...,v_n\}$ (3) spans $V$ and (4) is linearly independent.
+
+Apply the remark on the Replacement Lemma twice to statements (1) with (3) and (2) with (4).
+Since, $m\leq n$ and $m\geq n$, then $n=m$.
+\end{proof}
+
+\begin{_def}
+A vector space is said to be of \textbf{finite dimension} or \textbf{n-dimensional}, written $dim(V)=n$ if $V$ has a basis with $n$ elements.
+The vector space $\{0\}$ has dimension $0$.
+If a vector $V$ doesn't have a finite basis, then $V$ is said to be of infinite dimension or infinite dimensional.
+\end{_def}
+
+\begin{ex} The following are examples of dimensions,
+
+\begin{enumerate}[1)]
+ \item $dim(\mathbb{R}^n)=n$
+ \item $dim(M_{m\times n})=mn$
+ \item $dim(P_n(t))=n+1 \quad \text{because of }(t^0,t^1,...,t^n)$
+ \item $dim(P(t))=\infty$
+\end{enumerate}
+\end{ex}
+
+To find the basis of a set of vectors, put the vectors into matrix rows and find the echelon form.
 
 \end{document}

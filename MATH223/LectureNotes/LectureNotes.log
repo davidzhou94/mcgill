@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.20)  20 JAN 2015 20:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.20)  24 JAN 2015 17:02
 entering extended mode
 **LectureNotes.tex
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.tex
@@ -271,60 +271,61 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \c@ex=\count116
 \c@_exc=\count117
 \c@_prop=\count118
+\c@_lem=\count119
 
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
+\scratchcounter=\count120
 \scratchdimen=\dimen118
 \scratchbox=\box28
-\nofMPsegments=\count120
-\nofMParguments=\count121
+\nofMPsegments=\count121
+\nofMParguments=\count122
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count122
+\MPscratchCnt=\count123
 \MPscratchDim=\dimen119
-\MPnumerator=\count123
-\makeMPintoPDFobject=\count124
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
 \everyMPtoPDFconversion=\toks28
 )
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 25.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count125
+\c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 25.
+LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \nameref on input line 25.
 
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.out)
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.out)
 \@outlinefile=\write3
-LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+LaTeX Font Info:    Try loading font information for U+msa on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+LaTeX Font Info:    Try loading font information for U+msb on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -335,7 +336,7 @@ ng (ext4): destination with the same identifier (name{page.1}) has been already
  used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52 \chapter
+l.53 \chapter
              {Vectors} [1]
 Chapter 1.
 [2
@@ -346,13 +347,13 @@ Chapter 2.
 
 ] [6] [7]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 365.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 366.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 365.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 366.
  [8
 
 ] [9] [10]
@@ -362,25 +363,25 @@ Chapter 4.
 
 ] [13]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 707.
- [14] [15] [16] [17] [18] [19] [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1201.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1201.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 708.
+ [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1379.
+ [25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1379.
 
 (F:\repos\mcgill\MATH223\LectureNotes\LectureNotes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1201.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1201.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1379.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1379.
 
 Package rerunfilecheck Info: File `LectureNotes.out' has not changed.
-(rerunfilecheck)             Checksum: A0915A55814674881EA6C851AA833E80;1858.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1201.
+(rerunfilecheck)             Checksum: DCCC807CAFE8778F5D29BD06CC6F6EDF;2050.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1379.
  ) 
 Here is how much of TeX's memory you used:
- 6228 strings out of 493921
- 87419 string characters out of 3144876
- 171144 words of memory out of 3000000
- 9268 multiletter control sequences out of 15000+200000
+ 6263 strings out of 493921
+ 87686 string characters out of 3144876
+ 171191 words of memory out of 3000000
+ 9278 multiletter control sequences out of 15000+200000
  13702 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,14n,28p,246b,584s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -388,18 +389,21 @@ Here is how much of TeX's memory you used:
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on LectureNotes.pdf (22 pages, 252909 bytes).
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on LectureNotes.pdf (26 pages, 289595 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 202 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 521 PDF objects out of 1000 (max. 8388607)
+ 227 named destinations out of 1000 (max. 500000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
