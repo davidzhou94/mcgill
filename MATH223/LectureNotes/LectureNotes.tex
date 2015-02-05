@@ -11,16 +11,17 @@
   \end{array}\right]
 }
 
-\newtheorem{_thm}{Theorem}
 \theoremstyle{definition}
-\newtheorem{_prob}{Problem}
-\newtheorem{_sol}{Solution}
-\newtheorem{_def}{Definition}
-\newtheorem{_rem}{Remark}
-\newtheorem{ex}{Example}
-\newtheorem{_exc}{Exercise}
-\newtheorem{_prop}{Proposition}
-\newtheorem{_lem}{Proposition}
+\newtheorem{_prob}{Problem}[section]
+\newtheorem{_exc}{Exercise}[section]
+\newtheorem*{_sol}{Solution}
+\newtheorem*{_def}{Definition}
+\newtheorem{_thm}{Theorem}[section]
+\newtheorem{_prop}[_thm]{Proposition}
+\newtheorem{_lem}[_thm]{Lemma}
+\newtheorem{ex}{Example}[section]
+\theoremstyle{remark}
+\newtheorem{_rem}{Remark}[section]
 
 \begin{document} 
 \title{MATH 223} 
@@ -48,7 +49,7 @@ Office Hours: M1:45-2:45PM W2:00-3:00PM, F3:30-4:30PM \newline
   Final       & 60\% & 85\% \\
 \end{tabular} \newline
 
-The midterm will be scheduled for the 7th week of class.
+The midterm is to be held on February 19th in class.
 
 \chapter{Vectors}
 
@@ -1283,7 +1284,7 @@ or as coordinates: $[P(\cdot)]_B=[1,-1,1]$.
 Next we will give a series of auxiliary lemmas and propositions to show that the size of any two basis for a vector space has the same number of vectors.
 
 \begin{_prop}
-Let $V$ be a vector space and $S=\{v_1+...+v_n\}$ be a spanning set of $V$.
+Let $V$ be a vector space and $S=\{v_1,...,v_n\}$ be a spanning set of $V$.
 Then,
 \begin{enumerate}[i)]
  \item if $w\in V$, $\{w,v_1,...,v_n\}$ is linearly dependent and spans $V$.
@@ -1361,7 +1362,7 @@ Since, $m\leq n$ and $m\geq n$, then $n=m$.
 \begin{_def}
 A vector space is said to be of \textbf{finite dimension} or \textbf{n-dimensional}, written $dim(V)=n$ if $V$ has a basis with $n$ elements.
 The vector space $\{0\}$ has dimension $0$.
-If a vector $V$ doesn't have a finite basis, then $V$ is said to be of infinite dimension or infinite dimensional.
+If a vector $V$ does not have a finite basis, then $V$ is said to be of infinite dimension or infinite dimensional.
 \end{_def}
 
 \begin{ex} The following are examples of dimensions,
@@ -1376,4 +1377,439 @@ If a vector $V$ doesn't have a finite basis, then $V$ is said to be of infinite 
 
 To find the basis of a set of vectors, put the vectors into matrix rows and find the echelon form.
 
+\begin{_thm}
+Let $V$ be a vector space of dimension $n$.
+Then,
+\begin{enumerate}[i)]
+ \item any $n+1$ or more vectors are linearly dependent, and
+ \item any linearly independent set $S=\{u_1,...,u_n\}$ with $n$ elements is a basis of $V$, and
+ \item any spanning set $\{v_1,...,v_n\}$ is a basis of $V$.
+\end{enumerate}
+\end{_thm}
+
+\begin{_prop}
+Let $V$ be a vector space and $\{v_1,...,v_k\}$ a linearly independent set.
+Suppose that $w\in V$ with $w\notin span\{v_1,...,v_k\}$, then $\{w,v_1,...,v_k\}$ is linearly independent.
+\end{_prop}
+
+\begin{_thm}
+\underline{"Basis Extension"}
+
+Let $V$ be a vector space of dimension $m$ and a set $\{v_1,...,v_k\}$ of vectors in $V$ that is linearly independent and $k<n$.
+Then there exist $n-k$ vectors $w_1,...,w_{n-k}$ such that $\{v_1,...,v_k,w_1,...,w_{n-k}\}$ is a basis of $V$.
+\end{_thm}
+
+\begin{proof}
+$\{v_1,...,v_k\}$ is not a basis since $k<n$ and basis of $V$ have $n$ elements.
+So, $\{v_1,...,v_k\}$ does not span $V$.
+
+Then there is $w_1\in V$ such that $w_1\notin span\{v_1,...,v_k\}$.
+
+By the proposition, $\{w_1,v_1,...,v_k\}$ is linearly independent.
+
+If $k+1=n$, we are done.
+
+If $k+1<n$, we repeat the argument $n-k$ times to get a set $\{v_1,...,v_k,w_1,...,w_{n-k}\}$ that is linearly independent.
+This set has $n$ elements and is linearly independent, so part (ii) of the above theorem guarantees that it is a basis.
+\end{proof}
+
+\begin{_thm}
+Let $W$ be a subspace of an $n$-dimensional vector space $V$.
+Then,
+\[dim(W)\leq n\]
+\end{_thm}
+
+\begin{proof}
+Suppose we have the basis of $W$ with $k$ elements.
+By the replacement lemma, $k\leq n$.
+\end{proof}
+
+\section{Application to Matrices}
+
+\begin{_exc}
+Find a basis for the row space, column space, and null space of the matrix $A$.
+
+\[A=\begin{bmatrix}
+1 & 2 & 3 & 4 & 5 \\
+2 & 3 & 7 & 7 & 8 \\
+1 & 3 & 2 & 4 & 6 \\
+1 & 2 & 3 & 3 & 4
+\end{bmatrix}\]
+
+Row space:
+
+Put the matrix into row-reduced form.
+
+\[A\sim\begin{bmatrix}
+1 & 2 & 3 & 4 & 5 \\
+0 & 1 & -1 & -2 & -2 \\
+0 & 0 & 0 & -1 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}=M\]
+
+\begin{align*}
+rowsp(A)&=rowsp(M) \\
+&=span\{(1,2,3,4,5),(0,1,-1,-1,2),(0,0,0,-1,1)\}
+\end{align*}
+
+Therefore $\{(1,2,3,4,5),(0,1,-1,-1,2),(0,0,0,-1,1)\}$ is a basis of $rowsp(A)$.
+\[dim(rowsp(A))=3\]
+
+Column space:
+
+\[col(A)=span\{(1,2,1,1),(2,3,3,2),(4,7,4,3)\}\]
+
+\[M=\begin{bmatrix}
+\boxed{1} & 2 & 3 & 4 & 5 \\
+0 & \boxed{1} & -1 & -2 & -2 \\
+0 & 0 & 0 & \boxed{-1} & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}\]
+
+The boxed entries (the pivots) are the columns of the column space in the original matrix.
+
+Otherwise, we must check whether every column vector in $col(A)$ can be added to the basis (i.e. are linear combinations of the preceding column vectors.
+\[dim(col(A))=3\]
+
+Null space:
+
+\[\begin{amatrix}{5}
+1 & 2 & 3 & 4 & 5 & 0 \\
+0 & 1 &-1 &-1 &-2 & 0 \\
+0 & 0 & 0 &-1 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{amatrix}\]
+
+\[x_3=t\quad x_5=s\]
+\begin{align*}
+0&=-x_4+x_5\\
+0&=x_2-x_3-x_4-2x_5\\
+0&=x_1+2x_2+3x_3+4x_4+5x_5
+\end{align*}
+
+\[\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5
+\end{bmatrix}=t
+\begin{bmatrix}
+-5 \\ 1 \\ 1 \\ 0 \\ 0
+\end{bmatrix}+s
+\begin{bmatrix}
+3 \\ 1 \\ 0 \\ -1 \\ 1
+\end{bmatrix}\]
+
+\[N(A)=span\{(-5,1,1,0,0),(3,1,0,-1,1)\}\]
+
+So, $\{(-5,1,1,0,0),(3,1,0,-1,1)\}$ is a basis for $N(A)$.
+\[dim(N(A))=2\]
+\end{_exc}
+
+\begin{_thm}
+\underline{"Fundamental Theorem of Linear Algebra, part I}
+
+Let $A\in M_{m\times n}$ with $rank(A)=r$.
+Then the row space and the column space both have dimension $r$ and the null space has dimension $m-r$.
+\end{_thm}
+
+\section{Sums and Direct Sums}
+
+\begin{_def}
+Let $U$ and $W$ be subspaces of a vector space $V$.
+The \textbf{sum} of $V$ and $W$ is given by,
+\[U+W=\{v\in V \mid v=u+w, u\in U, w\in W\}\]
+\end{_def}
+
+Vector space sum is not the same as set union.
+
+\begin{ex}
+The following are examples of the sum of subspaces of $M_{2\times 2}$.
+
+\[U=\left\lbrace
+\begin{bmatrix}
+a & b \\ 0 & 0
+\end{bmatrix}
+\mid
+a, b\in \mathbb{R}
+\right\rbrace
+\quad
+dim(U)=2
+\]
+
+\[W=\left\lbrace
+\begin{bmatrix}
+a & 0 \\ c & 0
+\end{bmatrix}
+\mid
+a, c\in \mathbb{R}
+\right\rbrace
+\quad
+dim(W)=2
+\]
+
+\[W=\left\lbrace
+\begin{bmatrix}
+a & b \\ c & 0
+\end{bmatrix}
+\mid
+a, b, c\in \mathbb{R}
+\right\rbrace
+\quad
+dim(U+W)=3
+\]
+
+\[U\cap W=\left\lbrace
+\begin{bmatrix}
+a & 0 \\ 0 & 0
+\end{bmatrix}
+\mid
+a \in \mathbb{R}
+\right\rbrace
+\quad
+dim(U\cap W)=1
+\]
+
+So we might have,
+\[\begin{bmatrix}
+1 & 1 & \\ 1 & 0
+\end{bmatrix}
+\in U+W
+\text{ but, }
+\begin{bmatrix}
+1 & 1 & \\ 1 & 0
+\end{bmatrix}
+\notin U\cap W\]
+\end{ex}
+
+\begin{_prop}
+Let $U$ and $W$ be subspaces of $V$.
+Then,
+\begin{enumerate}[i)]
+ \item $U+W$ is a subspace; 
+ \item $U$ and $W$ are contained in $U+W$;
+ \item $U+W$ is the smallest subset containing $U$ and $W$, i.e. if $S$ is a subspace containing $U$ and $W$ then $U+W\subseteq S$ 
+ \item $W+W=W$
+\end{enumerate}
+\end{_prop}
+
+\begin{_thm}
+Suppose that $U$ and $W$ are finite dimensional subspaces of $V$.
+Then $U+W$ also has finite dimension and,
+\[dim(U+W)=dim(U)+dim(W)-dim(U\cap W)\]
+\end{_thm}
+
+**Proof here**
+
+\begin{_def}
+The vector space $V$ is said to be the \textbf{direct sum} of its subspaces $U$ and $W$ denoted by $V=U\oplus W$, if every $v\in V$ can be written in one and only one way as $v=u+w$ with $u\in U, w\in W$.
+\end{_def}
+
+\begin{_thm}
+The vector space $V$ is the direct sum of $U$ and $W$ iff (i) $V=U+w$ and (ii) $U\cap W=\{0\}$.
+\end{_thm}
+
+\begin{ex}
+The follow are examples of vector space sums.
+\begin{enumerate}[1)]
+ \item 
+  \[U=\{(a,b,0)\mid a,b\in \mathbb{R}\} \quad \text{[xy-plane]}\]
+  \[W=\{(0,b,c)\mid b,c\in \mathbb{R}\} \quad \text{[yz-plane]}\]
+  \[\mathbb{R}^3=U+W\]
+  \begin{align*}
+  U\cap W&=\{(0,b,0)\mid b\in \mathbb{R}\} \quad \text{[y-axis]} \\
+  &\neq \{0\} \\
+  (1,1,1)&=(1,1,0)+(0,0,1) \\
+  &=(1,0,0)+(0,1,1)
+  \end{align*}  
+ \item
+  \[U=\{(a,0,0)\mid a\in \mathbb{R}\} \quad \text{[x-axis]}\]
+  \[W=\{(0,b,0)\mid b\in \mathbb{R}\} \quad \text{[y-axis]}\]
+  \[U+W\quad \text{[xy-plane]}\]
+  $U\cup W$ is just the union of the axis, it is not a subspace.
+\end{enumerate}
+\end{ex}
+
+\chapter{Linear Transformations}
+
+\section{Basic Definitions}
+
+A transformation is of the form,
+\[v\rightarrow Av\quad A\in M_{m\times n}, v\in \mathbb{R}^n, Av\in \mathbb{R}^m\]
+
+It has the following operations,
+\begin{itemize}
+ \item $A(v+w)=Av+Aw$
+ \item $k\in \mathbb{R}, A(kv)=k(Av)$
+\end{itemize}
+
+\section{Introduction to Linear Transformations}
+
+\begin{_def}
+Let $V$ and $U$ be vector spaces.
+A function $T: V\rightarrow U$ is a \textbf{linear transformation} or linear mapping if the following two conditions are satisfied:
+\begin{enumerate}[i)]
+ \item For any vectors $v, w\in V,\, T(v+w)=T(v)+T(w)$.
+  ($T$ preserves vector addition.)
+ \item For any $v\in V$ and $k\in \mathbb{R}$, $T(kv)=kT(v)$
+  ($T$ preserves scalar multiplication.)
+\end{enumerate}
+\end{_def}
+
+\begin{_rem}
+(i) and (ii) can be replaced by the following one.
+For any $v,w\in V$ and $a,b\in \mathbb{R}$,
+\[T(av+bw)=aT(v)+bT(w)\]
+\end{_rem}
+
+\begin{ex}
+The following are examples for linear transformations.
+
+\begin{enumerate}[1)]
+ \item Multiplication by matrix $A\in M_{m\times n}$.
+  \[L_A:\mathbb{R}^n\rightarrow\mathbb{R}^m \quad L_A(v)=Av \forall v\in \mathbb{R}^n\]
+ \item Projection.
+  \[P:\mathbb{R}^3\rightarrow \mathbb{R}^2\]
+  This is the projection into the xy-plane.
+  \begin{align*}
+    P(x,y,z)&=(x,y,0) \\
+    P(x,y,z)&=\begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+    x \\ y \\ z
+    \end{bmatrix}
+  \end{align*}
+  Let $v,w\in V$ and $a,b\in \mathbb{R}$,
+  \begin{align*}
+   v&=(v_1,v_2,v_3) \\
+   w&=(w_1,w_2,w_3)
+  \end{align*}
+  \begin{align*}
+  P(av+bw)&=P(av_1+bw_1,av_2+bw_2,av_3+bw_3) \\
+  &=(av_1+bw_1,av_2+bw_2,0) \\
+  &=(av_1,av_2,0)+(bw_1,bw_2,0) \\
+  &=a(v_1,v_2,0)+b(w_1,w_2,0) \\
+  &=aP(v_1, v_2, v_3)+bP(w_1,w_2,w_3) \\
+  %=aP(v)+bP(w)
+  \end{align*}
+ \item Reflection.
+  \[R:\mathbb{R}^2\rightarrow\mathbb{R}^2\]
+  This is the reflection in the y-axis.
+  \begin{align*}
+   R(x,y)&=R(-x,y) \\
+   &=\begin{bmatrix}
+   -1 & 0 \\ 0 & 1
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\ y
+   \end{bmatrix}
+  \end{align*}
+ \item Derivatives.
+  \[D:P(t)\rightarrow P(t)\]
+  \[D(p(\cdot))=\frac{\mathrm{d}P}{\mathrm{d}t}(\cdot)\]
+  For example, given $P(t)=1-t^2, D(P(t))=2t$.
+ \item Integrals.
+  \[J:P(t)\rightarrow \mathbb{R}\]
+  \[J(D(\cdot))=\int_0^1 \! P(t) \, \mathrm{d}t\]
+  Given $p(\cdot), q(\cdot)\in P(t), a, b\in \mathbb{R}$,
+  \begin{align*}
+   J(ap(\cdot)+bq(\cdot))&=\int_0^1 \! (ap(\cdot)+bq(\cdot))) \, \mathrm{d}t \\
+   &=\int_0^1 \! ap(\cdot) \mathrm{d}t + \int_0^1 \! bq(\cdot) \, \mathrm{d}t \\
+   &=a\int_0^1 \! p(\cdot) \mathrm{d}t + b\int_0^1 \! q(\cdot) \, \mathrm{d}t \\
+   &=aJ(p(\cdot))+bJ(q(\cdot))
+  \end{align*}
+ \item Zero and Identity Transformations.
+  Given vector spaces $V$ and $U$,
+  \[\begin{array}{l l}
+    \text{Zero transformation: }& \bar{0}: V\rightarrow U \\
+    & \bar{0}(v)=0\in U \\
+    \text{Identity transformation: }& 1_v: V\rightarrow V \\
+    & 1_v(v)=v
+    \end{array}\]
+\end{enumerate}
+\end{ex}
+
+\begin{_rem}
+If $T$ is a linear transformation then $T(0)=0$.
+\end{_rem}
+\begin{proof}
+Take $k=0$ in (ii) of the definition of linear transformations.
+\begin{align*}
+T(kv)&=kT(v) \\
+T(0v)&=0T(v) \\
+T(0)&=0
+\end{align*}
+\end{proof}
+
+\begin{_rem}
+For any scalars $a_i\in \mathbb{R}$ and vectors $v_i\in V$,
+\[T(a_1v_1+...+a_nv_n)=a_1T(v_1)+...+a_nT(v_n)\]
+\end{_rem}
+
+\begin{proof}
+By induction.
+
+Base case ($n=1$): $T(a_1v_1)=a_1T(v_1)$ [By (ii)]
+
+Induction step ($n=k\Rightarrow n=k+1$):
+
+Suppose the remark is true for $n=k$.
+We want to show that the remark is true when $n=k+1$.
+
+\begin{align*}
+& T(a_1v_1+...+a_{k+1}v_{k+1}) \\
+=& T((a_1v_1+...+a_kv_k)+a_{k+1}v_{k+1}) \\
+=& T(a_1v_1+...+a_kv_k)+T(a_{k+1}v_{k+1}) \quad \text{[by (i)]}\\
+=& a_1T(v_1)+...+a_kT(v_k)+T(a_{k+1}v_{k+1}) \quad \text{[Induction hypothesis, ]}n=k\\
+=& a_1T(v_1)+...+a_kT(v_k)+a_{k+1}T(v_{k+1}) \quad \text{[by (ii)]}\\
+\end{align*}
+\end{proof}
+
+\begin{_exc}
+How many linear transformations $T:\mathbb{R}^2\rightarrow \mathbb{R}^2$ are there such that $T(1,0)=(-1,1)$ and $T(0,1)=(1,-1)$ exist?
+\begin{align*}
+T(x,y)=&T(x(1,0)+y(0,1)) \\
+=&xT(1,0)+yT(0,1) \\
+=&x(-1,1)+y(1,-1) \\
+=&(-x,x)+(y,-y) \\
+=&(-x+y, x-y)
+\end{align*}
+
+There is one and only one such linear transformation.
+\end{_exc}
+
+\begin{_prop}
+Let $T:V\rightarrow U$ and $S:V\rightarrow U$ be two linear transformations.
+Suppose that $\{v_1,...,v_n\}$ spans $V$.
+If $T(v_i)=S(v_i) \, \forall i=1,...,n$, then $T=S$.
+\end{_prop}
+
+\begin{proof}
+We want to show that,
+\[T(v)=S(v)\, \forall v\in V\]
+Let $v\in V$.
+Since $\{v_1,...,v_n\}$ spans $V$, these exist scalars $a_1,...,a_n\in \mathbb{R}$ such that,
+\[v=a_1v_1+...+a_nv_n\]
+Then,
+\begin{align*}
+T(v)=&a_1T(v_1)+...+a_nT(v_n) \\
+=&a_1S(v_1)+...+a_nS(v_n) \quad \text{[by condition of proposition]} \\
+=&S(v)
+\end{align*}
+\end{proof}
+
+\begin{ex}
+The following is an example of what is not a linear transformation.
+
+\[T:\mathbb{R}^2\rightarrow\mathbb{R}^2\]
+Adds the vector $(1,2)$ to any vector $(x,y)\in\mathbb{R}^2$
+\begin{align*}
+T(x,y)=&(x,y)+(1,2)=(x+1,y+2) \\
+\text{Case: }&\\
+T(0,0)=&(1,2)\neq (0,0) \\
+\text{Case: }&\\
+T(2,2)=&(3,4)\\
+2T(1,1)=&2(2,3)=(4,6)\neq (3,4)
+\end{align*}
+\end{ex}
 \end{document}

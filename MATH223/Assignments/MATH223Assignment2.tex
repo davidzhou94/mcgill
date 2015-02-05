@@ -1,0 +1,381 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools,array}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{pifont}
+\newdate{date}{03}{02}{2015}
+
+\graphicspath{ {F:/repos/mcgill/MATH223/Assignments/} }
+
+\usetkzobj{all}
+\usetikzlibrary{calc,positioning,intersections,quotes,decorations.markings}
+
+\newtheorem{problem}{Problem} 
+\theoremstyle{definition} 
+\newtheorem*{solution}{Solution} 
+
+\setlength\parskip{\baselineskip}
+\setlength\parindent{0pt}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\begin{document} \title{Assignment 2} 
+
+\author{Yang David Zhou, ID 260517397} 
+\date{\displaydate{date}}
+\maketitle
+
+\begin{problem} Linear Independence.
+
+\end{problem}
+
+\begin{solution}
+
+Suppose,
+\[a(e^x)+b(xe^x)=0 \quad \forall x\in \mathbb{R}\]
+We want to show $a=b=0$.
+Take $x=0$ and $x=1$,
+\[\begin{array}{l l l}
+x=0 & a(e^0)+b(0\cdot e^0)=0 \\
+& a=0 \\
+x=1 & a(e^1)+b(e^1)=0 & \text{From above, }a=0\\
+& b(e)=0 \\
+& b=0
+\end{array}\]
+So $a=b=0$ and we are done.
+
+\end{solution}
+
+\begin{problem} More Linear Independence.
+
+\end{problem}
+
+\begin{solution}
+
+Suppose,
+\[a(u+w+v)+b(u-w+v)+c(w+v)=0\]
+We want to show $a=b=c=0$.
+\begin{align*}
+a(u+w+v)+b(u-w+v)+c(w+v)&=0\\
+au+aw+av+bu-bw+bv+cw+cv&=0\\
+au+bu+av+bv+cv+aw-bw+cw&=0\\
+u(a+b)+v(a+b+c)+w(a-b+c)&=0\\
+\end{align*}
+It is given that $u,v,w$ are linearly independent so,
+\[\begin{array}{r r c l l}
+(1) & a+b=0 & \Leftrightarrow & a=-b & (4)\\
+(2) & a+b+c=0 & \Leftrightarrow & c=-a-b & (5)\\
+(3) & a-b+c=0\\
+\end{array}\]
+\begin{multicols}{2}
+Substitute $(4)$ and $(5)$ in $(3)$,
+\begin{align*}
+(-b)-b+(-a-b)&=0\\
+-a-3b&=0 \quad -(6)\\
+\end{align*}
+Substitute $(4)$ in $(6)$,
+\begin{align*}
+-(-b)-3b&=0\\
+-2b&=0\\
+b&=0\\
+\end{align*}
+Substitute $b=0$ in $(1)$,
+\begin{align*}
+a+0&=0\\
+a&=0\\
+\end{align*}
+Substitute $a=0, b=0$ in $(2)$,
+\begin{align*}
+0+0+c&=0\\
+c&=0\\
+\end{align*}
+\end{multicols}
+And so $a=b=c=0$ and we are done.
+
+\end{solution}
+
+\begin{problem}
+
+Spanning Sets.
+
+\end{problem}
+
+\begin{solution}
+
+$S$ spans $V$ so every vector $u\in V$ is a linear combination of some vectors in $S$.
+
+So either $u\in S$ or $u\in V-S$.
+
+Case $u\in S$:
+Suppose $v_i\in S$ and $v_i=u$.
+So, $u=1\cdot v_i$.
+Therefore,
+\[\{v_1,...,v_i,...,v_n,u\}\]
+is linearly dependent because $u$ is a multiple of $v$.
+
+Case $u\in V-S$:
+$S$ spans $V$ so suppose,
+\[u=a_iv_i+...+a_jv_j\]
+But then,
+\[\{v_1,...,v_i,...,v_j,...,v_n,u\}\]
+is linearly dependent because $w$ is a linear combination of $v_i,...,v_j$.
+And we are done.
+
+\end{solution}
+
+\begin{problem}
+
+More Spanning Sets.
+
+\end{problem}
+
+\begin{solution}
+
+It is given that $w\notin span\{v_1,...,v_k\}$.
+So $w$ is not a linear combination of $v_1,...,v_k$ by definition of $span$.
+It is given that $\{v_1,...,v_k\}$ is linearly independent.
+From lectures we have that if $w$ is not a linear combination of $v_1,...,v_k$ then $\forall v_i$, $v_i$ is not a linear combination of $v_1,...,v_{i-1},v_{i+1},...,v_k$.
+Therefore $\{v_1,...,v_k,w\}$ is also linearly independent.
+
+\end{solution}
+
+\begin{problem}
+
+Dimension and Basis.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{proof}
+Proof by contradiction.
+
+Assume $B$ is not a basis for $V$.
+
+It is given that $B$ is linearly independent so for it not to be a basis, it must not span $V$.
+Suppose $u_i\in V$ must be added to $B$ to make it a basis.
+But when $v_i$ is added to $B$, it will have $n+1$ vectors and $dim(V)=n$ so it must be linearly dependent.
+But then $B'=\{u_1,...,u_n,v_i\}$ cannot be a basis.
+Contradiction.
+$B$ must be a basis.
+
+This argument holds for any number of vectors $v_i,...,v_j$ that might be added from $B$ to make $B'$ a basis.
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+More Dimensions and Basis.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{proof}
+Proof by contradiction.
+
+Assume $B$ is not a basis for $V$.
+
+It is given that $B$ spans $V$ so for it not to be a basis, it must not be linearly independent.
+Suppose $v_i\in B$ is a linear combination of some other vectors in $B$, so
+\[B'=\{v_1,...,v_{i-1},v_{i+1},...,v_n\}\]
+is linearly independent and spans $V$.
+But this would make $B'$ a basis for $V$ which is a contradiction because $dim(V)=n$ and $B'$ has $n-1$ elements.
+$B$ must be a basis.
+
+This argument holds for any number of vectors $v_i,...,v_j$ that might be removed from $B$ to make $B'$ a basis.
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+Subspace of a Matrix.
+
+\end{problem}
+
+\begin{solution}
+
+(a)
+
+Clearly $X\subseteq M_{2\times 2}$.
+\begin{enumerate}[i)]
+ \item The zero vector is in $X$.
+ \[\begin{bmatrix}
+ 0 & 0 \\ 0 & 0
+ \end{bmatrix}^T
+ =\begin{bmatrix}
+ 0 & 0 \\ 0 & 0
+ \end{bmatrix}
+ \]
+ \item Take two matrices in $X$,
+ \[\begin{bmatrix}
+ a & c \\ c & b
+ \end{bmatrix}^T
+ =\begin{bmatrix}
+ a & c \\ c & b
+ \end{bmatrix}
+ \text{ and }
+ \begin{bmatrix}
+ d & f \\ f & e
+ \end{bmatrix}^T
+ =\begin{bmatrix}
+ d & f \\ f & e
+ \end{bmatrix}
+ \]
+ For any two scalars $k_1,k_2\in \mathbb{R}$,
+ \begin{align*}
+ & k_1
+ \begin{bmatrix}
+ a & c \\ c & b
+ \end{bmatrix}+k_2
+ \begin{bmatrix}
+ d & f \\ f & e
+ \end{bmatrix} \\
+ = & \begin{bmatrix}
+ k_1a & k_1c \\ k_1c & k_1b
+ \end{bmatrix}+
+ \begin{bmatrix}
+ k_2d & k_2f \\ k_2f & k_2e
+ \end{bmatrix} \\
+ = & \begin{bmatrix}
+ k_1a + k_2d & k_1c + k_2f \\ k_1c + k_2f & k_1b + k_2e
+ \end{bmatrix} \\
+ = & \begin{bmatrix}
+ k_1a + k_2d & k_1c + k_2f \\ k_1c + k_2f & k_1b + k_2e
+ \end{bmatrix}^T \\
+ \end{align*}
+ So $X$ is closed under scalar multiplication and vector addition.
+\end{enumerate}
+
+(b) This is a basis for $X$,
+\[\left\{
+\begin{bmatrix}
+0 & 1 \\ 1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+1 & 0 \\ 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 \\ 0 & 1
+\end{bmatrix}
+\right\}\]
+It is linearly independent because any row-column entry has only one component where it is non-zero.
+Clearly any linear combination of these three matrices is in $X$.
+The dimension is $3$ by definition of the dimension of a vector space.
+
+\end{solution}
+
+\begin{problem}
+
+Finding a Basis.
+
+\end{problem}
+
+\begin{solution}
+
+(a) Use the Row-Space Algorithm.
+
+\[
+\begin{array}{r l r l r l}
+& \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+-1 & -1 & 1 & 2 \\
+2 & 2 & 1 & -1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+2 & 2 & 1 & -1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+0 & -2 & -1 & -3
+\end{bmatrix} \\
+\sim & \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 3 & 3
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 1 & 1 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1
+\end{bmatrix} \\
+\sim & \begin{bmatrix}
+1 & 2 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 0 & 0 & -2 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1
+\end{bmatrix}
+\end{array}
+\]
+
+Thus,
+\[\{(1,0,0,-2),(0,1,0,1),(0,0,1,1)\}\]
+is a basis.
+The dimension is $3$ as the basis has $3$ vectors.
+
+(b) Add the vector $(0,0,0,1)$, so,
+\[\{(1,0,0,-2),(0,1,0,1),(0,0,1,1),(0,0,0,1)\}\]
+Clearly no vector is a linear combination of the others because for the first 3 vectors, there is only one element with a non-zero entry in each of the first $3$ components.
+
+\end{solution}
+
+\begin{problem}
+
+Finding Another Basis.
+
+\end{problem}
+
+\begin{solution}
+
+Use the Casting-Out Algorithm.
+\[
+\begin{array}{r l r l r l}
+& \begin{bmatrix}
+1 & 2 & 0 & 1 \\
+1 & 2 & -1 & 0 \\
+1 & 2 & 0 & 1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 0 & 1 \\
+0 & 0 & -1 & -1 \\
+1 & 2 & 0 & 1
+\end{bmatrix}
+& \sim & \begin{bmatrix}
+1 & 2 & 0 & 1 \\
+0 & 0 & -1 & -1 \\
+0 & 0 & 0 & 0
+\end{bmatrix} \\
+\sim & \begin{bmatrix}
+\boxed{1} & 2 & 0 & 1 \\
+0 & 0 & \boxed{1} & 1 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{array}
+\]
+So, $p_1(t)=1+t+t^2$, $p_3(t)=-t$ form a basis of $W$.
+
+\end{solution}
+
+\end{document}
