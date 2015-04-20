@@ -1,0 +1,344 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools,array}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{pifont}
+\newdate{date}{17}{03}{2015}
+
+\graphicspath{ {F:/repos/mcgill/MATH223/Assignments/} }
+
+\usetkzobj{all}
+\usetikzlibrary{calc,positioning,intersections,quotes,decorations.markings}
+
+\newtheorem{problem}{Problem} 
+\theoremstyle{definition} 
+\newtheorem*{solution}{Solution}
+\theoremstyle{remark} 
+\newtheorem*{theorem}{Claim}
+
+\setlength\parskip{\baselineskip}
+\setlength\parindent{0pt}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\begin{document} \title{Assignment 4} 
+
+\author{Yang David Zhou, ID 260517397} 
+\date{\displaydate{date}}
+\maketitle
+
+\begin{problem} Computing an inner product.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{align*}
+& \langle u_1-3u_2+2u_3, -u_1+u_2-3u_3 \rangle \\
+= & \langle u_1, -u_1+u_2-3u_3\rangle -3 \langle u_2, -u_1+u_2-3u_3\rangle \\
+  & \quad +2 \langle u_3, -u_1+u_2-3u_3\rangle \\
+= & -\langle u_1,u_1 \rangle + \langle u_1, u_2 \rangle -3 \langle u_1, u_3 \rangle \\
+  & \quad -3 (-\langle u_2,u_1 \rangle + \langle u_2, u_2 \rangle -3 \langle u_2, u_3 \rangle) \\
+  & \quad +2 (-\langle u_3,u_1 \rangle + \langle u_3, u_2 \rangle -3 \langle u_3, u_3 \rangle) \\
+= & -\langle u_1,u_1 \rangle + \langle u_1, u_2 \rangle -3 \langle u_1, u_3 \rangle \\
+  & \quad +3 \langle u_1,u_2 \rangle -3 \langle u_2, u_2 \rangle +9 \langle u_2, u_3 \rangle) \\
+  & \quad -2 \langle u_1,u_3 \rangle +2 \langle u_2, u_3 \rangle -6 \langle u_3, u_3 \rangle) \\
+= & -\langle u_1,u_1 \rangle +4 \langle u_1, u_2 \rangle -5 \langle u_1, u_3 \rangle \\
+  & \quad -3 \langle u_2,u_2 \rangle +11 \langle u_2, u_3 \rangle -6 \langle u_3, u_3 \rangle) \\
+= & -(1)+4(-2)-5(1)-3(2)+11(-1)-6(3) \\
+= & -1-8-5-6-11-18 \\
+= & \boxed{-49}
+\end{align*}
+
+\end{solution}
+
+\begin{problem} Proof of an inequality.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{theorem}
+\[
+\frac{(a_1+...+a_n)^2}{n} \leq a_1^2+...+a_n^2
+\]
+\end{theorem}
+\begin{proof}
+Let $v=(1,...,1)\in \mathbb{R}^n$.
+For any $u=(a_1,...,a_n)\in\mathbb{R}^n$,
+\[
+u\cdot v=(1\cdot a_1,...,1\cdot a_n)=a_1+...+a_n
+\]
+So we apply the Cauchy-Schwartz inequality to $u$ and $v$,
+\begin{align*}
+(u\cdot v)^2 & \leq \|u\|^2 \|v\|^2 \\
+\Leftrightarrow (a_1+...+a_n)^2 & \leq \sum_{i=1}^{n} a_i^2 \sum_{i=1}^{n} 1^2 \\
+\Leftrightarrow (a_1+...+a_n)^2 & \leq (a_1^2+...+a_n^2) n \\
+\Leftrightarrow \frac{(a_1+...+a_n)^2}{n} & \leq a_1^2+...+a_n^2 \\
+\end{align*}
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+Proof of a remark on orthogonal sets of vectors.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{theorem}
+\[
+\|u_1+...+u_r\|^2 = \| u_1 \|^2+...+\| u_r \|^2
+\]
+\end{theorem}
+\begin{proof}
+It is given that $\forall u_i,u_j\in S \quad \langle u_i, u_j \rangle=0$ where $i\neq j$.
+\begin{align*}
+  & \|u_1+...+u_r\|^2 \\
+= & \left( \sqrt{\langle u_1+...+u_r,u_1+...+u_r \rangle} \right)^2 \\
+= & \langle u_1+...+u_r,u_1+...+u_r \rangle \\
+= & \sum_{i=1}^{r} \sum_{i=1}^{r} \langle u_i,u_j \rangle \quad \text{[by definition]} \\
+= & \sum_{i=1}^{r} \langle u_i,u_i \rangle \quad \text{[from given, all other terms become 0]} \\
+= & \sum_{i=1}^{r} \| u_i \|^2 \quad \text{[by definition]}
+\end{align*}
+So finally we have the result that,
+\[
+\|u_1+...+u_r\|^2 = \| u_1 \|^2+...+\| u_r \|^2
+\]
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+Proof of a property of inner product spaces.
+
+\end{problem}
+
+\begin{solution}
+
+\begin{theorem}
+Let $S$ be a subset of an inner product space $V$, then $S^\perp$ is a subspace of $V$.
+\end{theorem}
+\begin{proof}
+By definition, $S\subseteq V$ and $S^\perp=\{v\in V:\langle v,w \rangle =0 \quad \forall w\in S\}$.
+
+The zero vector is in $S^\perp$, $0\in S^\perp$, because the zero vector is orthogonal to every vector in the inner product space $V$.
+
+Take any $u,v\in S^\perp$ and scalars $a,b\in \mathbb{R}$.
+\begin{align*}
+  & \langle au+bv,w \rangle \\
+= & a\langle u, w \rangle + b\langle v, w \rangle \\
+= & a\cdot 0 + b\cdot \\
+= & 0
+\end{align*}
+Thus, $au+bv\in S^\perp$ and therefore $S^\perp$ is a subspace of $V$.
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+Matrix representation of an inner product.
+
+\end{problem}
+
+\begin{solution}
+
+It is given that a symmetric matrix $A\in M_{n\times n}$ is positive definite if $u^T Au>0\quad \forall u\in \mathbb{R}^n$.
+\begin{enumerate}[\quad(a)]
+ \item 
+  \begin{theorem}
+  Let $\langle ,\rangle : \mathbb{R}^n \times \mathbb{R}^n\rightarrow \mathbb{R}$ be defined by $\langle u,v \rangle = u^T Av$ where $A\in M_{n\times n}$ and $A$ is positive definite.
+  $\langle ,\rangle$ is an inner product in $\mathbb{R}^n$.
+  \end{theorem}
+  \begin{proof}
+  Take any $u_1,u_2,v\in \mathbb{R}^n$ and scalars $a,b\in \mathbb{R}$,
+  \begin{align*}
+    & \langle au_1+bu_2, v \rangle \\
+  = & (au_1+bu_2)^TAv \\
+  = & ((au_1)^T + (bu_2)^T)Av \\
+  = & (au_1^T+bu_2^T)Av \\
+  = & au_1^TAv+bu_2^TAv \\
+  = & a\langle u_1,v \rangle + b\langle u_2,v \rangle
+  \end{align*}
+  Thus, $\langle ,\rangle$ satisfies axiom 1 of inner products.
+  
+  Take any $u,v\in \mathbb{R}^n$, we have that $u^TAv\in \mathbb{R}$ and so $(u^TAv)^T=u^TAv$ because the transpose of a scalar is equal to itself.
+  \begin{align*}
+  \langle u,v \rangle & = u^TAv \\
+  & = (u^TAv)^T \\
+  & = v^TA^Tu^{TT} \quad \text{[property of matrix transpose]} \\
+  & = v^TAu \quad \text{by definition, }A=A^T\\
+  & = \langle v,u \rangle
+  \end{align*}
+  Thus, $\langle ,\rangle$ satisfies axiom 2 of inner products.
+  
+  By definition of positive definite matrix $A$, for any non-zero $u\in \mathbb{R}^n$, and $\langle u,u \rangle > 0$.
+  If $u=0$, then $\langle 0,0 \rangle = 0^TA0 = 0$.
+  Thus $\langle ,\rangle$ satisfies axiom 3 of inner products.
+  
+  And thus, $\langle ,\rangle$ satisfies all three axioms and is an inner product.
+  \end{proof}
+ \item
+  \begin{theorem}
+  Let $\langle ,\rangle : \mathbb{R}^2 \times \mathbb{R}^2\rightarrow \mathbb{R}$ be defined by $\langle u,v \rangle = u^T Av$ where,
+  \[
+  A=\begin{bmatrix}
+  1 & 3 \\ 3 & 9
+  \end{bmatrix}
+  \]
+  $\langle ,\rangle$ is an inner product in $\mathbb{R}^2$.
+  \end{theorem}
+  The claim is false.
+  The null space is as follows,
+  \[
+  \begin{bmatrix}
+  1 & 3 \\ 3 & 9
+  \end{bmatrix}\sim
+  \begin{bmatrix}
+  1 & 3 \\ 0 & 0
+  \end{bmatrix}
+  \]
+  And so,
+  \[
+  N(A)=span\left(
+  \begin{bmatrix}
+  -3 \\ 1
+  \end{bmatrix}\right)
+  \]
+  Since the null space is not empty, then there are might be vectors that are not orthogonal whose product is $0$.
+  
+  In $\langle u,u \rangle$, if $u=(-3, 1)$ then $\langle u,u \rangle = 0$.
+  Thus $\langle ,\rangle$ violates axiom 3 as $u$ is not the zero vector and therefore $\langle ,\rangle$ is not an inner product.
+\end{enumerate}
+
+\end{solution}
+
+\begin{problem}
+
+Orthogonal sets and orthogonal basis.
+
+\end{problem}
+
+\begin{solution}
+
+It is given that,
+\[
+S=\{v_1,v_2,v_3\}=\left\lbrace
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix},
+\begin{bmatrix}
+-2 \\ 0 \\ 2
+\end{bmatrix},
+\begin{bmatrix}
+-1 \\ 2 \\ -1
+\end{bmatrix}\right\rbrace
+\]
+\begin{enumerate}[\quad(a)]
+ \item
+  \begin{theorem}
+  $S$ is an orthogonal basis of $\mathbb{R}^3$
+  \end{theorem}
+  \begin{proof}
+  \begin{align*}
+  v_1\cdot v_2 & = -2+0+2 = 0 \\
+  v_2\cdot v_3 & = 2+0-2 = 0 \\
+  v_3\cdot v_1 & = -1+2-1 = 0
+  \end{align*}
+  Thus $S$ is an orthogonal set and therefore $S$ is linearly independent.
+  Any 3 linearly independent vectors in $\mathbb{R}^3$ forms a basis for $\mathbb{R}^3$.
+  Thus, $S$ is an orthogonal basis of $\mathbb{R}^3$.
+  \end{proof}
+ \item
+  I will use the Fourier co-efficients.
+  The vector $v$ is given by $v=(3,4,-1)$.
+  \[
+  [v]_S=\begin{bmatrix}
+  a_1 & a_2 & a_3
+  \end{bmatrix}^T
+  \]
+  \begin{align*}
+  a_1 & = \frac{\langle v,v_1 \rangle}{\langle v_1,v_1 \rangle}
+   = \frac{3+4-1}{1+1+1}
+   = \frac{6}{3} = 2 \\
+  a_2 & = \frac{\langle v,v_2 \rangle}{\langle v_2,v_2 \rangle}
+   = \frac{-6+0-2}{4+0+4}
+   = \frac{-8}{8} = -1 \\
+  a_3 & = \frac{\langle v,v_3 \rangle}{\langle v_3,v_3 \rangle}
+   = \frac{-3+8+1}{1+4+1}
+   = \frac{6}{6} = 1\frac{-x+2y-z}{6}
+  \end{align*}
+  \[\boxed{
+  [v]_S=\begin{bmatrix}
+  2 & -1 & 1
+  \end{bmatrix}^T}
+  \]
+ \item
+  I will use the Fourier co-efficients again.
+  The vector $v$ is given by $v=(x,y,z)$.
+  \[
+  [v]_S=\begin{bmatrix}
+  a_1 & a_2 & a_3
+  \end{bmatrix}^T
+  \]
+  \begin{align*}
+  a_1 & = \frac{\langle v,v_1 \rangle}{\langle v_1,v_1 \rangle}
+   = \frac{x+y+z}{1+1+1}
+   = \frac{x+y+z}{3} \\
+  a_2 & = \frac{\langle v,v_2 \rangle}{\langle v_2,v_2 \rangle}
+   = \frac{-2x+2z}{4+0+4}
+   = \frac{-x+z}{4} \\
+  a_3 & = \frac{\langle v,v_3 \rangle}{\langle v_3,v_3 \rangle}
+   = \frac{-x+2y-z}{1+4+1}
+   = \frac{-x+2y-z}{6}
+  \end{align*}
+  \[\boxed{
+  [v]_S=\begin{bmatrix}
+  \frac{x+y+z}{3} & \frac{-x+z}{4} & \frac{-x+2y-z}{6}
+  \end{bmatrix}^T}
+  \]
+\end{enumerate}
+
+\end{solution}
+
+\begin{problem}
+
+Inner product of a polynomial space.
+
+\end{problem}
+
+\begin{solution}
+
+The work for this problem is attached.
+
+The non-normalized orthogonal basis I found after applying Gram-Schmidt is as follows,
+\begin{align*}
+w_1 & = 1 \\
+w_2 & = t - \frac{1}{2} \\
+w_3 & = t^2 - t + \frac{1}{6} \\
+w_4 & = t^3 - \frac{3}{2}t^2 - \frac{3}{5}t - \frac{1}{20}
+\end{align*}
+
+After normalizing, the orthonormal basis I found after normalizing each vector,
+\begin{align*}
+\hat{w_1} & = 1 \\
+\hat{w_2} & = \sqrt{3}(2t-1) \\
+\hat{w_3} & = \sqrt{5}(6t^2-6t+1) \\
+\hat{w_4} & = \frac{\sqrt{35}}{\sqrt{269}}\left(4t^3-6t^2-\frac{12}{5}t-\frac{1}{20}\right)
+\end{align*}
+
+\end{solution}
+
+\end{document}

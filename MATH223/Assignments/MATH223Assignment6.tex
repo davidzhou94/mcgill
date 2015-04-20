@@ -1,0 +1,261 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools,array}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{pifont}
+\newdate{date}{09}{04}{2015}
+
+\graphicspath{ {F:/repos/mcgill/MATH223/Assignments/} }
+
+\usetkzobj{all}
+\usetikzlibrary{calc,positioning,intersections,quotes,decorations.markings}
+
+\newtheorem{problem}{Problem} 
+\theoremstyle{definition} 
+\newtheorem*{solution}{Solution}
+\theoremstyle{remark} 
+\newtheorem*{theorem}{Claim}
+\newtheorem*{lemma}{Lemma}
+
+\setlength\parskip{\baselineskip}
+\setlength\parindent{0pt}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\begin{document} \title{Assignment 6} 
+
+\author{Yang David Zhou, ID 260517397} 
+\date{\displaydate{date}}
+\maketitle
+
+\begin{problem}
+
+Proving a remark of eigenvectors and eigenvalues
+
+\end{problem}
+
+\begin{solution}
+
+(a) To proceed with this proof I first need to prove the following fact:
+
+\begin{lemma}
+Suppose $A$ is a square matrix with an eigenvalue $\lambda$ and eigenvector $v$, then,
+\[A^mv=\lambda^mv\quad\forall m>0\]
+\end{lemma}
+\begin{proof}
+\begin{align*}
+A^kv = & A^{k-1}Av \\
+ = & A^{k-1}\lambda v \quad \text{[Usual definition of eigen vector]} \\
+ = & \lambda (A^{k-1}v) \quad \text{[An eigenvalue is over a field]} \\
+ = & \lambda (A^{k-2}Av) \\
+ = & \lambda (A^{k-2}\lambda v) \\
+ = & \lambda^2 (A^{k-2}v) \\
+& \vdots \quad \text{[We repeat the above argument a total of k times]}\\
+ = & \lambda^k v \\
+\end{align*}
+\end{proof}
+\begin{theorem}
+Suppose $A$ is a square matrix and $v$ be an eigenvector with eigenvalue $\lambda$.
+If $p(t)$ is a polynomial then,
+\[p(A)v=p(\lambda)v\]
+\end{theorem}
+\begin{proof}
+$p(t)$ is a polynomial so it can defined as follows,
+
+\[p(t)=a_mt^m+...+a_1t+a_0\]
+
+\begin{align*}
+p(A)v & = (a_mA^m+...+a_1A+a_0I)v \\
+& = a_mA^mv+...+a_1Av+a_0Iv \\
+& = a_m\lambda^mv+...+a_1\lambda v+a_0v \quad \text{[Applying the above lemma]} \\
+& = (a_m\lambda^m+...+a_1\lambda +a_0)v \\
+& = p(\lambda)v
+\end{align*}
+\end{proof}
+
+(b)
+
+The following remark was given in lecture.
+\begin{lemma}
+The characteristic polynomial and the minimum polynomial have the same roots.
+\end{lemma}
+
+Suppose $m(t)$ is the minimum polynomial of $A$.
+Then a consequence of the above remark is that,
+\[m(A)=0\]
+
+We apply the claim proven in part (a).
+\begin{align*}
+m(\lambda)v & = m(A)v \\
+& = 0
+\end{align*}
+
+But $v\neq 0$ by definition of eigenvectors so in $m(\lambda)v = 0$, it must be the $m(\lambda)$ term that is zero.
+Therefore $m(\lambda)=0$.
+
+\end{solution}
+
+\begin{problem}
+
+Computing minimum polynomials and Jordan canonical forms
+
+\end{problem}
+
+\begin{solution}
+
+(a)
+
+$A$ is triangular, so,
+\begin{align*}
+\Delta(t) & = (t-1)(t-1)(t-1)(t-2) \\
+& = (t-1)^3(t-2)
+\end{align*}
+
+Let $m(t)$ be the minimum polynomial of $A$.
+$m(t)$ must divide $\Delta(t)$, so $m(t)$ is either
+\begin{itemize}
+ \item \[f(t)=(t-1)(t-2)\]
+ \item \[g(t)=(t-1)^2(t-2)\]
+ \item \[h(t)=(t-1)^3(t-2)\]
+\end{itemize}
+
+To be certain we must test $f(t)$ and $g(t)$.
+
+\begin{align*}
+f(A) & = 
+\begin{bmatrix}
+0 & -1 & 1 & -3 \\
+-1 & 0 & 4 & 1 \\
+-1 & -1 & 0 & -1 \\
+-1 & -1 & -1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+-1 & -2 & 0 & -4 \\
+-2 & -1 & 3 & 0 \\
+-2 & -2 & -1 & -2 \\
+-2 & -2 & -2 & 0
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+6 & 5 & 2 & -2 \\
+-9 & -8 & -6 & -4 \\
+5 & 5 & -1 & 4 \\
+3 & 3 & -4 & 6
+\end{bmatrix}
+\end{align*}
+
+So, $m(t)\neq f(t)$.
+
+\begin{align*}
+g(A) & = 
+\begin{bmatrix}
+0 & -1 & 1 & -3 \\
+-1 & 0 & 4 & 1 \\
+-1 & -1 & 0 & -1 \\
+-1 & -1 & -1 & -1
+\end{bmatrix}^2
+\begin{bmatrix}
+-1 & -2 & 0 & -4 \\
+-2 & -1 & 3 & 0 \\
+-2 & -2 & -1 & -2 \\
+-2 & -2 & -2 & 0
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+3 & 2 & -1 & -5 \\
+-5 & -4 & -2 & 0 \\
+2 & 2 & -4 & 1 \\
+1 & 1 & -6 & 4
+\end{bmatrix}
+\begin{bmatrix}
+-1 & -2 & 0 & -4 \\
+-2 & -1 & 3 & 0 \\
+-2 & -2 & -1 & -2 \\
+-2 & -2 & -2 & 0
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+11 & 4 & 17 & -10 \\
+7 & 18 & -10 & 24 \\
+4 & 0 & 8 & 0 \\
+3 & 1 & 1 & 8
+\end{bmatrix}
+\end{align*}
+
+So, $m(t)\neq g(t)$.
+
+Therefore $m(t)=h(t)=\Delta (t)=(t-1)^3(t-2)$.
+
+(b)
+
+In part (a) we determined that $\Delta (t)=m(t)=(t-1)^3(t-2)$.
+
+Therefore the Jordan canonical form for $A$ is,
+
+\[J=diag\left(
+\begin{bmatrix}
+1 & 1 & \\
+ & 1 & 1 \\
+ & & 1
+\end{bmatrix},
+\begin{bmatrix}
+2
+\end{bmatrix}
+\right)\]
+
+\end{solution}
+
+\begin{problem}
+
+Linear independence of a set of matrix-vector products
+
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+
+Let $S=\{v,Av,A^2v,...,A^{k-1}\}$.
+Given that $\forall v\in \mathbb{R}^n$ we have $A^kv=0$ and $A^{k-1}v\neq 0$.
+
+\begin{theorem}
+$S$ is linearly independent.
+\end{theorem}
+\begin{proof}
+Let $a_0,...,a_{k-1}\in \mathbb{R}$.
+If $S$ is linearly independent, then in,
+\[a_0v+a_1Av+a_2A^2v+...+a_{k-1}A^{k-1}=0\]
+it is sufficient to show that $a_0=...=a_{k-1}=0$.
+
+A consequence of the fact that $A^kv=0$ is that $A^mv=0$ if $m>k$ because $A^mv$ can be rewritten as $A^{m-k}A^kv=0$.
+
+So we begin by multiplying the above equation by $A^{k-1}$ to obtain,
+\begin{align*}
+a_0A^{k-1}v+a_1A^kv+a_2A^{k+1}v+...+a_{k-1}A^{2k-2} & = 0 \\
+a_0A^{k-1}v & = 0 \quad \text{[above consequence]}
+\end{align*}
+
+Since it is given that $A^{k-1}\neq 0$ then clearly $a_0=0$ as we obtained the result that $a_0A^{k-1}v = 0$.
+
+Now we have the fact that $a_0=0$ and we repeat the above argument but we multiply across with $A^{k-2}$ instead to obtain,
+\begin{align*}
+a_0A^{k-2}v+a_1A^{k-1}v+a_2A^kv+...+a_{k-1}A^{2k-3} & = 0 \\
+a_0A^{k-2}v+a_1A^{k-1}v & = 0 \quad \text{[above consequence]} \\
+a_1A^{k-1}v & = 0 \quad [a_0=0]
+\end{align*}
+
+Again, because $A^{k-1}\neq 0$ so $a_1=0$ as we obtained the result that $a_1A^{k-1}v = 0$.
+
+If we repeat the above argument a total of $k-2$ times then we will obtain the result that $a_0=a_1=...=a_k-1=0$ and therefore the set $S$ is linearly independent.
+
+\end{proof}
+
+\end{document}

@@ -1812,4 +1812,574 @@ T(2,2)=&(3,4)\\
 2T(1,1)=&2(2,3)=(4,6)\neq (3,4)
 \end{align*}
 \end{ex}
+
+\begin{_thm}
+Let $U$ and $V$ be vector spaces and let $\{v_1,...,v_n\}$ be a basis of $V$.
+Given any vectors $u_1,...,u_n\in U$, there exists $T:U\rightarrow V$, a \underline{unique} linear transformation such that $T(v_i)=u_i\quad \forall i=1,...,n$.
+\end{_thm}
+
+\begin{proof}
+Step 1: We begin by defining the function $T:V\rightarrow U$ such that,
+\[T(v_i)=u_i\quad \forall i=1,...,n\]
+
+Let $v\in V$.
+Since $\{v_1,...,v_n\}$ is a basis then there exists scalars $a_1,...,a_n$ such that,
+\[v=a_1v_1+...+a_nv_n\]
+We define $T:V\rightarrow U$ as,
+\[T(v)=a_1u_1+...+a_nu_n\]
+$T$ is well defined since for each $v\in V$, the scalars $a_i$ are unique.
+\begin{align*}
+ T(v_i)&=T(0v_1+...+0v_{i-1}+v_i+0v_{i+1}+...+0v_n) \\
+ &=u_i
+\end{align*}
+Step 2: Show that $T$ is a linear transformation.
+
+Let $v, w\in V$ and $\alpha, \beta\in \mathbb{R}$.
+We want to show that,
+\[T(\alpha v+\beta w)=\alpha T(v)+\beta T(w)\]
+There exist scalars $a_1,...,a_n,b_1,...,b_n$ such that,
+\begin{align*}
+ v&=a_1v_1+...+a_nv_n\\
+ w&=b_1v_1+...+b_nv_n
+\end{align*}
+since $\{v_1,...,v_n\}$ is a basis of $V$.
+\begin{align*}
+ T(\alpha v+\beta w)&=T((\alpha a_1+\beta b_1)v_1+...+(\alpha a_n+\beta b_n)v_n)\\
+ &=(\alpha a_1+\beta b_1)u_1+...+(\alpha a_n+\beta b_n)u_n\\
+ &=\alpha(a_1u_1+...+a_nu_n)+\beta(b_1u_1+...+b_nu_n)\\
+ &=\alpha T(v)+\beta T(w)
+\end{align*}
+Step 3: Show that $T$ is unique.
+
+Suppose that $G:V\rightarrow U$ is a linear transformation such that $G(v_i)=u_i\quad\forall i=1,...,n$.
+So $G(v_i)=T(v_i) \quad\forall i=1,...,n$ where $\{v_1,...,v_n\}$ is a spanning set (it is actually a basis) and thus by the proposition, $G=T$.
+\end{proof}
+
+\begin{_def}
+Let $T:V\rightarrow U$ be a linear transformation.
+The \textbf{kernel} of $T$ is given by,
+\[ker(T)=\{v\in V\mid T(v)=0\}\]
+\end{_def}
+
+\begin{_def}
+Let $T:V\rightarrow U$ be a linear transformation.
+The \textbf{image} of $T$ is given by,
+\[im(T)=\{u\in U\mid \exists v\in V : T(v)=u\}\]
+\end{_def}
+
+\begin{ex} On the relation to matrices.
+
+\begin{align*}
+A\in M_{m\times n} \quad L_A:\mathbb{R}^n\rightarrow\mathbb{R}^m : L_A(v)=Av\\
+ker(L_A)&=N(A) \\
+im(L_A)&=col(A)=\{Av:v\in \mathbb{R}^n\}
+\end{align*}
+\end{ex}
+
+\begin{_rem}
+An image can equivalently be given by,
+\begin{align*}
+im(T)&=\{u\in U\mid \exists v\in V : T(v)=u\}\\
+&=\{T(v)\mid v\in \mathbb{R}^n\}
+\end{align*}
+\end{_rem}
+
+\begin{_thm}
+Let $T:V\rightarrow U$ be a linear transformation.
+Then $ker(T)$ is a subspace of $V$ and $im(T)$ is a subspace of $U$.
+\end{_thm}
+
+*COPY PROOF FROM ASSIGNMENT*
+
+\begin{ex}
+\begin{enumerate}
+ \item Let $P:\mathbb{R}^3\rightarrow\mathbb{R}^3$ be a linear transformation defined as, $P(x,y,z)=(x,y,0)$.
+ This is the projection onto the xy-plane.
+ \begin{align*}
+  ker(P)&=\{(x,y,z)\in\mathbb{R}^3\mid x=y=0\} \text{z-axis}\\
+  im(P)&=\{(x,y,z)\in\mathbb{R}^3\mid z=0\} \text{xy-axis}
+ \end{align*}
+ \item Let $D^2:P(t)\rightarrow P(t)$ be a linear transformation defined as, $D^2(p(\cdot))=\frac{\mathrm{d}^2p}{\mathrm{d}t^2}(\cdot)$
+ \begin{align*}
+  p(t)&=a_0+a_1t+a_2t^2+...+a_nt^n\\
+  \frac{\mathrm{d}p}{\mathrm{d}t}(t)&=a_1+2a_2t+3a_3t^2+...+na_nt^{(n-1)}\\
+  \frac{\mathrm{d}^2p}{\mathrm{d}t^2}(t)&=2a_2+3\cdot 2a_3t+...+n(n-1)a_nt^{(n-2)}
+ \end{align*}
+ $ker(D^2)=P_1(t)$ [degree 1 or less disappears]
+ 
+ $im(D^2)=P(t)$ [all polynomials can result]
+\end{enumerate}
+\end{ex}
+
+\begin{_prop}
+Suppose that $\{v_1,...,v_n\}$ is a spanning set of $V$ and let $T:V\rightarrow U$ be a linear transformation.
+Then $\{T(v_1),...,T(v_n)\}$ spans $im(T)$.
+\end{_prop}
+
+\begin{proof}
+Let $u\in im(T)$.
+Then $\exists v\in V$ such that $u=T(v)$.
+Since $\{v_1,...,v_n\}$ is a spanning set of $V$, $\exists$ scalars $a_1,...,a_n$ such that, $v=a_1v_1+...+a_nv_n$.
+\begin{align*}
+ u&=T(v)\\
+ &=T(a_1v_1+...+a_nv_n)\\
+ &=a_1T(v_1)+...+a_nT(v_n)
+\end{align*}
+\end{proof}
+
+\begin{ex}
+Let $L_A:\mathbb{R}^4\rightarrow\mathbb{R}^3$ be the linear transformation given by $L_A(x,y,z,t)=(x-y+t,2x-y+z+3t,3x+y+4z+7t)$
+\[A=
+\begin{bmatrix}
+1 & -1 & 0 & 1 \\
+2 & -1 & 1 & 3 \\
+3 & 1 & 4 & 7
+\end{bmatrix}
+\]
+Let $e_1,...,e_4$ be the canonical basis for $\mathbb{R}^4$.
+\begin{align*}
+ L_A(e_1)&=(1,2,3) & L_A(e_3)&=(0,1,4) \\
+ L_A(e_2)&=(-1,-1,1) & L_A(e_4)&=(1,3,7)
+\end{align*}
+\begin{align*}
+ im(L_A)&=span\{L_A(e_1),L_A(e_2),L_A(e_3),L_A(e_4)\} \\
+ &=span\{(1,2,3),(-1,-1,1),(0,1,4),(1,3,7)\}\\
+ &=col(A)
+\end{align*}
+Since the image is a subspace, we might want to know properties such as dimension of $L_A$.
+\[A=
+\begin{bmatrix}
+1 & -1 & 0 & 1 \\
+2 & -1 & 1 & 3 \\
+3 & 1 & 4 & 7
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+\boxed{1} & -1 & 0 & 1 \\
+0 & \boxed{1} & 1 & 1 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\begin{align*}
+ im(L_A)&=col(A)=span\{(1,2,3),(-1,-1,1)\}\\
+ dim(im(L_A))&=2\\
+ ker(L_A)&=N(A)
+\end{align*}
+$z$ and $t$ are free variables so,
+\[=\left\lbrace
+\begin{array}{l}
+z=s_1\\
+t=s_2\\
+y+z+t=0\\
+x-y+t=0
+\end{array}\right.
+\]
+\[t=s_2\quad z=s_1\quad y=-s_1-s_2\quad x=-s_1-2s_2\]
+\begin{align*}
+ ker(L_A)&=N(A)\\
+ &=span\{(-1,-1,1,0),(-2,-1,0,1)\}\\
+\end{align*}
+So given that the two spanning vectors are linearly independent, $dim(ker(L_A))=2$.
+\begin{align*}
+ dim(N(A))&+dim(col(A))&=\text{\# of columns}\\
+ dim(ker(L_A))&+dim(im(L_A))&=dim(\mathbb{R}^4)\\
+ 2&+2&=4
+\end{align*}
+\end{ex}
+
+\begin{_def}
+Let $T:V\rightarrow U$ be a linear transformation.
+The \textbf{rank} of $T$ is the dimension of $im(T)$.
+The \textbf{nullity} of $T$ is the dimension of $ker(T)$.
+\begin{align*}
+ rank(T)&=dim(im(T))\\
+ nullity(T)&=dim(ker(T))
+\end{align*}
+\end{_def}
+
+\begin{_thm}
+\underline{Rank-Nullity Theorem}.
+
+Let $T:V\rightarrow U$ be a linear transformation with $V$ a vector space of dimension $n$.
+Then,
+\begin{align*}
+ dim(V)&=rank(T)+nullity(T)\\
+ &=dim(im(T))+dim(ker(T))
+\end{align*}
+\end{_thm}
+
+\begin{_lem}
+$ker(T)$ is a subspace of $V$ and $V$ has finite dimension.
+Then $dim(ker(T))\leq dim(V)$.
+
+*COPY PROOF FROM ASSIGNMENT*
+\end{_lem}
+
+\begin{proof}
+
+By a previous proposition, $dim(im(T))\leq dim(V)$.
+We can suppose that $\{u_1,...,u_s\}\in V$ is a basis for $ker(T)$.
+$\{w_1,...,w_r\}\in U$ is a basis for $im(T)$.
+
+By the definition of $im(T)$, there exist vectors $v_1,...,v_r\in V$ such that $T(v_i)=w_i\quad\forall i=1,...,r$.
+
+Consider $B=\{u_1,...,u_s,v_1,...,v_r\}$.
+$B$ has $s+r$ elements.
+We claim that $B$ is a basis of $V$.
+Then,
+\begin{align*}
+ dim(V)&=s+r\\
+ &=dim(ker(T))+dim(im(T))
+\end{align*}
+We must prove this claim,
+\begin{itemize}
+ \item $B$ spans $V$.
+ 
+ Let $v\in V$.
+ Then $T(v)\in im(T)$.
+ Since $\{w_1,...,w_r\}$ is a basis for the image, $\exists$ scalars $a_1,...,a_r$ such that,
+ \begin{align*}
+  T(v)&=a_1w_1+...+a_rw_r\\
+  &=a_1T(v_1)+...+a_rT(v_r)\quad\text{[from above]}\\
+  &=T(a_1v_1+...+a_rv_r)\\
+  0&=T(v)-T(a_1v_1+...+a_rv_r)\\
+  \Leftrightarrow 0&=T(v-a_1v_1+...+a_rv_r)\\
+ \end{align*}
+ \[v-a_1v_1-...-a_rv_r\in ker(T)\]
+ Since $\{u_1,...,u_s\}$ is a basis of $ker(T)$, there exist $b_1,...,b_s$ such that,
+ \begin{align*}
+ & v-a_1v_1-...-a_rv_r=b_1u_1+...+b_su_s \\
+ \Leftrightarrow & v=b_1u_1+...+b_su_s+a_1v_1+...+a_rv_r \\
+ \end{align*}
+ \item $B$ is linearly independent.
+ 
+ Suppose that,
+ \[b_1u_1+...+b_su_s+a_1v_1+...+a_rv_r=0 \quad (*)\]
+ where $b_1,...,b_s,a_1,...,a_r\in \mathbb{R}$.
+ We have to show that $b_1=...=b_s=a_1=...=a_r=0$.
+ 
+ We have,
+ \begin{align*}
+  & T(b_1u_1+...+b_su_s+a_1v_1+...+a_rv_r)=T(0) \\
+  \Leftrightarrow & b_1T(u_1)+...+b_sT(u_s)+a_1T(v_1)+...+a_rT(v_r)=0 \quad \text{[by def]} \\
+  \Leftrightarrow & b_1(0)+...+b_s(0)+a_1w_1+...+a_rw_r=0 \\
+  \Leftrightarrow & a_1w_1+...+a_rw_r=0
+ \end{align*}
+ Since $\{w_1,...,w_r\}$ is a basis, $a_1=...=a_r=0$.
+\end{itemize}
+Now we can rewrite $(*)$ as,
+\[b_1u_1+...+b_su_s=0\]
+Since $\{u_1,...,u_s\}$ is a basis, then,
+\[b_1=...=b_s=0\]
+\end{proof}
+
+\chapter{Linear Transformations and Matrices}
+
+\section{Introduction}
+
+This chapter will depend greatly on applications of the two previous chapters.
+Most definitions and theorems will follow an example that demonstrates that result.
+You have been warned.
+
+\begin{ex}
+$T:\mathbb{R}^2\rightarrow\mathbb{R}^2$ is a linear transformation given by $T(x,y)=(x+2y,-x+y)$.
+\[A=
+\begin{bmatrix}
+1 & 2 \\ -1 & 1
+\end{bmatrix}
+\quad
+L_A=T
+\]
+\[
+A\begin{bmatrix}
+x \\ y
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 2 \\ -1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\ y
+\end{bmatrix}=
+\begin{bmatrix}
+x+2y \\ -x+y
+\end{bmatrix}
+\]
+\[
+T\left(\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}\right)=
+\begin{bmatrix}
+1 \\ -1
+\end{bmatrix}\quad
+T\left(\begin{bmatrix}
+0 \\ 1
+\end{bmatrix}\right)=
+\begin{bmatrix}
+2 \\ 1
+\end{bmatrix}
+\]
+\end{ex}
+
+\begin{_def}
+Let $T:V\rightarrow V$ be a linear transformation and $S=\{u_1,...,u_n\}$ is a basis of $V$.
+The matrix whose columns are the coordinate vectors of $T(u_1),...,T(u_n)$ relative to $S$ is denoted by $[T]_s$ and is called the \underline{matrix representation} of $T$ relative to the basis $S$.
+\[
+[T]_s=\left[[T(u_1)]_s,...,[T(u_m)]_s\right]
+\]
+\end{_def}
+
+\begin{ex} Continued from above.
+\begin{align*}
+ V&=\mathbb{R}^2 \quad E=\{(1,0),(0,1)\} \\
+ & \\
+ \begin{bmatrix}
+ 1 \\ -1
+ \end{bmatrix}&=1\cdot
+ \begin{bmatrix}
+ 1 \\ 0
+ \end{bmatrix}+(-1)\cdot
+ \begin{bmatrix}
+ 0 \\ 1
+ \end{bmatrix} \\
+ & \\
+ [T(u_1)]_E&=\begin{bmatrix}
+ 1 \\ -1
+ \end{bmatrix} \\
+ [T(u_2)]_E&=\begin{bmatrix}
+ 2 \\ 1
+ \end{bmatrix}
+\end{align*}
+\end{ex}
+
+\begin{ex}
+$T:\mathbb{R}^2\rightarrow\mathbb{R}^2$ is a linear transformation given by $T(x,y)=(x+2y,-x+y)$.
+We pick a basis $S=\{u_1,u_2\}=\{(1,2),(-1,1)\}$.
+\[T(u_1)=T\left(\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}\right)=
+\begin{bmatrix}
+5 \\ 1
+\end{bmatrix}=
+x\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}+
+y\begin{bmatrix}
+-1 \\ 1
+\end{bmatrix}\]
+The solution is,
+\[
+\left\lbrace\begin{array}{l}
+x-y=5\\
+2x+y=1
+\end{array}\right.
+\Leftrightarrow
+\left\lbrace\begin{array}{l}
+x=2\\
+y=-3
+\end{array}\right.
+\quad
+[T(u_1)]_S=\begin{bmatrix}
+2 \\ 3
+\end{bmatrix}
+\]
+Similarly, we have for $T(u_2)$,
+\[
+T(u_2)=T\left(\begin{bmatrix}
+-1 \\ 1
+\end{bmatrix}\right)=
+\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}=
+x\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}+
+y\begin{bmatrix}
+-1 \\ 1
+\end{bmatrix}
+\]
+The solution is,
+\[
+\left\lbrace\begin{array}{l}
+x=1\\
+y=0
+\end{array}\right.\quad
+[T(u_2)]_S=\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}
+\]
+And thus,
+\[
+[T]_S=\begin{bmatrix}
+2 & 1 \\ -3 & 0
+\end{bmatrix}
+\]
+
+Say we take some $v=(0,3)$ under the basis $E$, we have,
+\[
+T\left(\begin{bmatrix}
+0 \\ 3
+\end{bmatrix}\right)=
+Av=[T]_E[v]_E=
+\begin{bmatrix}
+1 & 2 \\ -1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 3
+\end{bmatrix}=
+\begin{bmatrix}
+6 \\ 3
+\end{bmatrix}
+\]
+
+To find $[v]_S$, we solve the following,
+\[
+\begin{bmatrix}
+0 \\ 3
+\end{bmatrix}=
+x\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}+
+y\begin{bmatrix}
+-1 \\ 1
+\end{bmatrix}
+\]
+So we have,
+\[
+\left\lbrace\begin{array}{l}
+x-y=0\\
+2x+y=3
+\end{array}\right.
+\Leftrightarrow
+\left\lbrace\begin{array}{l}
+x=1\\
+y=1
+\end{array}\right.\quad
+[v]_S=\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}
+\]
+To find $[T(v)]_S$, we solve the following,
+\[
+T(v)=\begin{bmatrix}
+6 \\ 3
+\end{bmatrix}=
+x\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}+
+y\begin{bmatrix}
+-1 \\ 1
+\end{bmatrix}
+\]
+So we have,
+\[
+\left\lbrace\begin{array}{l}
+x-y=6\\
+2x+y=3
+\end{array}\right.
+\Leftrightarrow
+\left\lbrace\begin{array}{l}
+x=3\\
+y=-3
+\end{array}\right.\quad
+[T(v)]_s=\begin{bmatrix}
+3 \\ -3
+\end{bmatrix}
+\]
+And finally we can verify that the following holds,
+\[
+[T]_S[v]_S=
+\begin{bmatrix}
+2 & 1 \\ -3 & 0
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}=
+\begin{bmatrix}
+3 \\ -3
+\end{bmatrix}=
+[T(v)]_S
+\]
+\end{ex}
+
+\begin{ex}
+The following is an example of basis of functions.
+
+We pick a basis $S=\{\sin t, \cos t, e^t, te^t\}$.
+Let $V=span(S)$.
+Let $D:V\rightarrow V$ be a linear transformation given by $D(f(\cdot))=\frac{\mathrm{d}f}{\mathrm{d}t}(\cdot)$.
+
+Write each of the following in the basis in $D$,
+\begin{enumerate}
+ \item \[
+ D(\sin t)=\cos t \quad [D(\sin t)]_S=\begin{bmatrix}
+ 0 \\ 1 \\ 0 \\ 0
+ \end{bmatrix}
+ \]
+ \item \[
+ D(\cos t)=-\sin t \quad [D(\cos t)]_S=\begin{bmatrix}
+ -1 \\ 0 \\ 0 \\ 0
+ \end{bmatrix}
+ \]
+ \item \[
+ D(e^t)=e^t \quad [D(e^t)]_S=\begin{bmatrix}
+ 0 \\ 0 \\ 1 \\ 0
+ \end{bmatrix}
+ \]
+ \item \[
+ D(te^t)=e^t+te^t \quad [D(te^t)]_S=\begin{bmatrix}
+ 0 \\ 0 \\ 1 \\ 1
+ \end{bmatrix}
+ \]
+\end{enumerate}
+
+With the above, we can conclude that,
+\[
+[D]_S=\begin{bmatrix}
+0 & -1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+Say we take some $f(t)=\sin t+2\cos t+2te^t$, then under the basis $S$,
+\[
+[f(t)]_S=\begin{bmatrix}
+1 \\ 2 \\ 0 \\ 2
+\end{bmatrix}
+\]
+\[
+D(f(t))=\cos t-2\sin t+2e^t+2te^t
+\]
+\[
+[D(f(t))]_S=\begin{bmatrix}
+-2 \\ 1 \\ 2 \\ 2
+\end{bmatrix}
+\]
+\[
+[D]_S[f(t)]_S=\begin{bmatrix}
+0 & -1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 2 \\ 0 \\ 2
+\end{bmatrix}=
+\begin{bmatrix}
+-2 \\ 1 \\ 2 \\ 2
+\end{bmatrix}
+\]
+
+And this is exactly what we expected.
+\end{ex}
+
+\begin{_thm}
+Let $T:V\rightarrow V$ be a linear transformation and $S$ a finite basis of $V$.
+Then, for any vector $v\in V$,
+\[
+[T]_S[v]_S=[T(v)]_S
+\]
+\end{_thm}
+
 \end{document}
