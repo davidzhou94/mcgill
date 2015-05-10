@@ -1,0 +1,68 @@
+S = {}
+V\S = all vertices
+initialize empty priority queue pq
+//pq will hold a bunch of edge names and the distance from their end vertices to the start vertex
+
+pq.add (all edges from startingVertex)
+
+for each u in V {
+	parent [u] = null
+}
+
+while pq is not empty {
+	curEdge = pq.getMinEdgeDistance()
+	u = curEdge.end()
+	dist [u] = pq.removeMinEdgeDistance()
+	S.add (u)
+	V\S.remove (u)
+	pq.add (all edges from u)
+
+	for each v in curEdge.end().adjList {
+		if v is in V\S {
+			tmpDistToV = dist[curEdge.end()] + cost (curEdge.end(),v)
+			if tmpDistToV < pq.getPriority(edge from curEdge.end() to v {
+				dist [v] = tmpDistToV
+				parent [v] = curEdge.end()
+	}
+
+
+Assign to every node an infinte distance value
+initial node set to 0
+
+Mark all nodes unvisited. 
+Set the initial node as current. 
+add all nodes to setVminusS
+
+For each adjacent node of current node
+	Calculate and store distance from current node to each neighbour node.
+	Mark the current node as visited and remove it from the setVminusS. 
+
+
+If the destination node has been marked visited (when planning a route between two specific nodes) or if the smallest tentative distance among the nodes in the unvisited set is infinity (when planning a complete traversal; occurs when there is no connection between the initial node and remaining unvisited nodes), then stop. The algorithm has finished.
+
+Select the unvisited node that is marked with the smallest tentative distance, and set it as the new "current node" then go back to step 3.
+
+*****
+
+S = {}
+initialize empty priority queue pq
+for each u in V
+	parent [u] = null
+	pq.add (u, infinity)
+pq.changePriority (s, 0)
+
+while pq is not empty {
+	u = pq.getMinVertex()
+	dist[u] = pq.removeMinDistance()
+	S.add(u)
+
+	for each v in u.adjList {
+		if v is in V\S {
+			tmpDistToV = dist [u] + cost(u,v)
+			if tmpDistToV < pq.getPriority (v) {
+				pq.setPriority (v, tmpDistV)
+				parent [v] = u
+			}
+		}
+	}
+}
