@@ -1,0 +1,226 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\newtheorem{problem}{Problem} 
+
+\theoremstyle{definition} 
+
+\newtheorem*{solution}{Solution} 
+
+\begin{document} \title{Assignment 5} 
+
+\author{Yang David Zhou, ID 260517397} 
+
+\date{\today}
+
+\maketitle
+
+\begin{problem} 
+
+Recurrence Equations.
+
+\end{problem}
+
+\begin{solution} 
+
+We apply the degree 2 linear recurrence method from lectures.
+
+(a) \(g(n)=6g(n-1)-7g(n-2)\)
+
+The auxiliary equation is \(x^2-6x+7=0\).
+
+Applying the quadratic formula,
+
+\begin{align*}
+x_{\pm} &= \frac{6\pm \sqrt{(-6)^2 -4(7)}}{2} \\
+x_{\pm} &= \frac{6\pm \sqrt{8}}{2} \\
+x_{\pm} &= 3\pm \sqrt{2}
+\end{align*}
+
+So, \(g(n)=a_1(x_+)^n +a_2(x_-)^n\) \\
+
+Since \(x_+ \neq x_-\), we use the formula from lecture for \(a_1\) and \(a_2\). \\
+
+\(a_1=\frac{3-1\cdot (3-\sqrt{2})}{(3+\sqrt{2})-(3-\sqrt{2})}\)
+
+\(a_1=\frac{\sqrt{2}}{2\cdot \sqrt{2}}=\frac{1}{2}\) \\
+
+\(a_2=\frac{3-1\cdot (3+\sqrt{2})}{(3-\sqrt{2})-(3+\sqrt{2})}\)
+
+\(a_1=\frac{-\sqrt{2}}{-2\cdot \sqrt{2}}=\frac{1}{2}\) \\
+
+Thus, \(g(n)=\frac{1}{2}(3+ \sqrt{2})^n +\frac{1}{2}(3- \sqrt{2})^n\) \\
+
+(b) \(f(n)=f(n-1)+2f(n-2)\)
+
+Every valid sequence from when length was \(n-1\) is still valid by appending a \(1\), so at \(n\) we have at least \(f(n-1)\). But we also have the sequences from when length was \(n-2\) that had a \(1\) appended to them and can now form valid sequences if we append a \(0\) or \(2\), so that is \(2\cdot f(n-2)\). Listing all possibilities yields \(f(0)=0\), \(f(1)=3\) and \(f(2)=5\) \\
+
+The auxiliary equation is \(x^2-x-2=0\).
+
+We can factor here, so \((x-2)(x+1)=0\) and thus\(x_+=2\) and \(x_-=-1\). \\
+
+We can solve for \(a_1\) and \(a_2\) linearly.
+
+\(f(1)=3=a_1\cdot 2 - a_2\) \\
+
+\(f(2)=5=a_1\cdot 4 - a_2\) \\
+
+Rearrange and substitute,
+
+\(3=a_1\cdot 2 - (5-a_1\cdot 4)\)
+
+\(3=6a_1\)
+
+\(a_1=\frac{4}{3}\) \\
+
+And for \(a_2\),
+
+\(a_2 = 5 - 4(\frac{4}{3})\)
+
+\(a_2 = \frac{-1}{3}\) \\
+
+So finally,
+
+\(f(n)=\frac{4}{3}(2^n) - \frac{1}{3}(-1)^n\)
+
+\(f(n)=\frac{1}{3}(2^2 \cdot (2^n) - (-1)^n)\)
+
+\(f(n)=\frac{1}{3}(2^{n+2} - (-1)^n)\)
+
+\end{solution}
+
+\begin{problem} 
+
+Inclusion-Exclusion.
+
+\end{problem}
+
+\begin{solution}
+
+There are \(2n\) letters and \(n\) houses. \\
+
+The total number of ways to deliver the letters is \(\frac{(2n)!}{2^n}\) because there are \((2n)!\) ways to order a \([2n]\) set. We divide by \(2^n\) because in each of the \(n\) houses it doesn't matter which of the two letters they receive first (so we only count the cases \(h_i={j,k}\), \(h_i={k,j}\) once). So for each house we divide once by 2 which is the same as dividing by \(2^n\). \\
+
+We solve this similar to the derangement problem from lecture.
+
+Set \(A_i=\) the set of permutations where both letters are correct for house \(i\). For any given house, \(A_i=\frac{(2n-2)!}{2^{n-1}}\).
+
+The number of ways to deliver two letters to each house so that every house has at least one wrong letter is:
+
+\begin{align*}
+&= \frac{(2n)!}{2^n} - |A_1\cup A_2\cup ... \cup A_n| \\
+&= \frac{(2n)!}{2^n} - {n \choose 1}\frac{(2n-2)!}{2^(n-1)}+{n \choose 2}\frac{(2n-4)!}{2^(n-2)}-...+(-1)^{n-1}{n \choose n}\frac{(2n-2n)!}{2^(n-n)} \\
+&= \frac{(2n)!}{2^n} - \frac{n!}{1!(n-1)!}\cdot \frac{(2n-2)!}{2^(n-1)}+\frac{n!}{2!(n-2)!}\cdot \frac{(2n-4)!}{2^(n-2)}-...+(-1)^{n-1}\frac{n!}{n!} \\
+&= \frac{(2n)!}{2^n} - n!\cdot (\frac{(2n-2)!}{1!\cdot (n-1)!\cdot 2^{(n-1)}}+\frac{(2n-4)!}{2!\cdot (n-2)!\cdot 2^{(n-2)}}+...+(-1)^{n-1}\frac{1}{n!}) \\
+&= \frac{(2n)!}{2^n} + n! \cdot \sum\limits_{i=1}^n \left( (-1)^i\cdot \frac{(2(n-i))!}{i!(n-i)!2^{n-i}} \right)
+\end{align*}
+
+Aside:
+
+\(|A_{i_1}|=\frac{(2n-2)!}{2^(n-1)}\)
+
+\(|A_{i_1}\cap A_{i_2}|=\frac{(2n-4)!}{2^(n-2)}\)
+
+\(|A_{i_1}\cap A_{i_2}\cap A_{i_3}|=\frac{(2n-6)!}{2^(n-3)}\)
+
+\end{solution}
+
+\begin{problem} 
+
+Inclusion-Exclusion II.
+
+\end{problem}
+
+\begin{solution}
+
+(a) The number of multiples of \(n\) that are less than \(m\) is \(\left \lfloor{\frac{m}{n}}\right \rfloor \) by definition of multiplication.
+
+So,
+
+\(2^2=4\) and \(\left \lfloor{\frac{50}{4}}\right \rfloor =12\)
+
+\(3^2=9\) and \(\left \lfloor{\frac{50}{9}}\right \rfloor =5\)
+
+\(4^2=16\) and \(\left \lfloor{\frac{50}{16}}\right \rfloor =3\)
+
+\(5^2=25\) and \(\left \lfloor{\frac{50}{25}}\right \rfloor =2\)
+
+\(6^2=36\) and \(\left \lfloor{\frac{50}{36}}\right \rfloor =1\)
+
+\(7^2=49\) and \(\left \lfloor{\frac{50}{49}}\right \rfloor =1\)
+
+All the numbers divisible by 16 and 36 are divisible by 4 because 4 divides 16 and 36. No other sets of multiples of the square intersect.
+
+Apply Inclusion-Exclusion on the numbers greater than 0 since all of the numbers that concern us divide 0.
+
+\(=49-12-5-3-2-1-1+3+1\)
+\(=29\) \\
+
+(b) We are given:
+
+\(|A\cup B\cup C|=100\)
+
+\(|A\cap B|=20\)
+
+\(|A\cap C|=31\)
+
+\(|B\cap C|=24\)
+
+\(|A\cup B|=85\)
+
+\(|A\cup C|=78\)
+
+\(|B\cup C|=84\)
+
+By Inclusion-Exclusion we have:
+
+\(|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C| + |A\cap B\cap C|\)
+
+We want to find \(|A\cap B\cap C|\).
+
+We also know by Inclusion-Exclusion that,
+
+\(|A\cup B|=|A|+|B|-|A\cap B|\)
+
+\(|A\cup C|=|A|+|C|-|A\cap C|\)
+
+\(|B\cup C|=|B|+|C|-|B\cap C|\)
+
+So,
+
+\(85=|A|+|B|-20\)
+
+\(78=|A|+|C|-31\)
+
+\(84=|B|+|C|-24\)
+
+Rearranging and substituting we get,
+
+\(|C|=52\)
+
+\(|B|=58\)
+
+\(|A|=47\)
+
+And then we solve for \(|A\cap B\cap C|\),
+
+\(100=47+58+52-20-31-24+|A\cap B\cap C|\)
+
+\(|A\cap B\cap C|=18\)
+
+\end{solution}
+
+\begin{problem} 
+
+Pigeon-Hole Principle.
+
+\end{problem}
+
+\begin{solution}
+
+Suppose there are 4 categories of coordinates of the form \((x,y)\), those where \(x\) is odd or even and \(y\) is odd or even. For two arbitrary coordinates that belong to the same category, the average of the two coordinates is integral. This is because of the property of even and odd numbers that the sum of any two odd numbers is even and the sum of any two even numbers is even. Any even \(x\) or \(y\) will stay even and any odd \(x\) or \(y\) will become even. By definition all even numbers are divisible by 2 and by definition the average of two numbers is their sum divided by two. Thus, by the Pigeon-Hole Principle, if there are 5 coordinates then two of the coordinates must share a category and can produce an integral average coordinate.
+
+\end{solution}
+
+\end{document}

@@ -1,0 +1,279 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,amssymb,tikz}
+
+\usetikzlibrary{shapes,backgrounds}
+
+\newtheorem{problem}{Problem} 
+
+\theoremstyle{definition} 
+
+\newtheorem*{solution}{Solution} 
+
+\begin{document} \title{Assignment 1} 
+
+\author{Yang David Zhou, ID 260517397} 
+
+\date{\today}
+
+\maketitle
+
+\begin{problem} 
+
+Venn Diagrams. Draw the Venn diagrams for 
+
+(a) \( (A \oplus B)\cap C \)
+
+(b) \( \bar{A} \cap \bar{B} \cap \bar{C} \)
+
+\end{problem}
+
+\begin{solution}
+
+\def\firstcircle{(90:1cm) circle (1.5cm)}
+\def\secondcircle{(210:1cm) circle (1.5cm)}
+\def\thirdcircle{(330:1cm) circle (1.5cm)}
+
+(a)
+
+\begin{tikzpicture}
+
+\filldraw [color=black, fill=white, thick] (-3,-3)rectangle (3,3);
+
+\begin{scope}
+\clip \secondcircle;
+\fill[cyan] \thirdcircle;
+\end{scope}
+
+\begin{scope}
+\clip \firstcircle;
+\fill[cyan] \thirdcircle;
+\end{scope}
+
+\begin{scope}
+\clip \firstcircle;
+\clip \secondcircle;
+\fill[white] \thirdcircle;
+\end{scope}
+
+\draw \firstcircle node [text=black,above] {$A$};
+\draw \secondcircle node [text=black,below left] {$B$};
+\draw \thirdcircle node [text=black,below right] {$C$};
+
+\end{tikzpicture}
+
+(b)
+
+\begin{tikzpicture}
+
+\filldraw [color=black, fill=cyan, thick] (-3,-3)rectangle (3,3);
+
+\begin{scope}
+\fill[white] \firstcircle;
+\fill[white] \secondcircle;
+\fill[white] \thirdcircle;
+\end{scope}
+
+\draw \firstcircle node [text=black,above] {$A$};
+\draw \secondcircle node [text=black,below left] {$B$};
+\draw \thirdcircle node [text=black,below right] {$C$};
+
+\end{tikzpicture}
+
+\end{solution}
+
+\begin{problem}
+
+Set Identities. Prove the following
+
+(a) \( \neg (A \cap B) = \neg A \cup \neg B \)
+
+(b) \( (B-A)\cup (C-A)=(B\cup C)-A \)
+
+\end{problem}
+
+\begin{solution}
+
+(a)
+
+\begin{proof}
+
+I will show that \( \neg (A \cap B) \subset \neg A \cup \neg B \) in i) 
+then \( \neg A \cup \neg B \subset \neg (A \cap B) \) in ii) \\ \\
+
+i) \\
+Take any \(x \in \neg (A \cap B) \) \\
+So, \(x \in U - A \cap B \) \\
+So, \(x \in U \) and \(x \notin A \cap B \) \\
+If \(x \notin A \cap B \), then \(x \in U - A \) and \(x \in U - B \) \\
+Therefore, \(x \in \neg A \cup \neg B \) \\ \\
+
+ii) \\
+Take any \(y \in \neg A \cup \neg B \) \\
+Either \(y \in \neg A \subset \neg (A \cap B) \) or \(y \in \neg B \subset \neg (A \cap B) \) \\
+Therefore, \(y \in \neg (A \cap B) \)
+
+\end{proof}
+
+(b)
+
+\begin{proof}
+
+I will show that \( (B-A)\cup (C-A) \subset (B\cup C)-A \) in i) 
+then \( (B\cup C)-A \subset (B-A)\cup (C-A) \) in ii) \\ \\
+
+i) \\
+Take any \(x \in (B-A)\cup (C-A) \) \\
+So, either \(x \in (B-A) \) or \( x \in (C-A) \)\\
+Since, \(x \in (B-A) \subset (B \cup C)-A \) because \(B \subset B \cup C \)
+
+ and \(x \in (C-A) \subset (B \cup C)-A \) because \(C \subset B \cup C \)
+ 
+ and both \(B-A \) and \(C-A \) are without \(A\) \\
+Therefore, \(x \in (B \cup C)-A \) \\ \\
+
+ii) \\
+Take any \(y \in (B \cup C)-A \) \\
+So, \(y \in B \cup C \) but \(y \notin A \) \\
+If either \(y \in B \) or \(y \in C \) and \(y \notin A \) then \(y \in (B-A) \cup (C-A) \)
+
+\end{proof}
+
+\end{solution}
+
+\begin{problem}
+
+Propositions. Which of the following sentences are statements?
+
+(a) Montréal is an island 
+
+(b) \(6+5=10\)
+
+(c) \(x+5=10\)
+
+\end{problem}
+
+\begin{solution}
+
+All of the sentences are statements except (c) because (a) and (b) are true and false respectively whereas c depends upon \(x\) and cannot be evaluated to be true or false. A statement or proposition must be either determinately true or false.
+
+\end{solution}
+
+\begin{problem}
+
+Conditional Statements. Which of the following implications are true?
+
+(a) If \(1 + 1 = 2\) then pigs can fly.
+
+(b) If pigs can fly then \(1 + 1 = 2\).
+
+(c) If \(1 + 1 = 3\) then pigs can fly.
+
+(d) If pigs can fly then \(1 + 1 = 3\).
+
+\end{problem}
+
+\begin{solution}
+
+Given an implication of the form "if \(p\) then \(q\)" or \(p=>q\), we can assess the validity of each implication by assuming that the statements "pigs can fly" and \(1+1=3\) are false while \(1+1=2\) is true.
+
+The implications by letter are: 
+
+(a) \(p=true\) \(q=false\) therefore, FALSE.
+
+(b) \(p=false\) \(q=true\) therefore, TRUE.
+
+(c) \(p=false\) \(q=false\) therefore, TRUE.
+
+(d) \(p=false\) \(q=false\) therefore, TRUE.
+
+\end{solution}
+
+\begin{problem}
+
+Tautologies. Which of the following are tautologies? If the statement is a
+tautology give a proof using the appropriate rules of logic at each step of the proof. If not, then justify your answer by giving a counter-example or using a proof table.
+
+(a) \(p \Rightarrow (p \vee q) \)
+
+(b) \( \neg (p \Rightarrow q) \equiv \neg q \)
+
+(c) \( \neg (p \oplus q) \equiv (p \Leftrightarrow q) \)
+
+(d) \( ((p\Rightarrow q)\Rightarrow r) \equiv (p\Rightarrow (q\Rightarrow r)) \)
+
+(e) \( (\neg p \wedge (p\Rightarrow q)) \equiv \neg q \)
+
+\end{problem}
+
+\begin{solution}
+
+(a) IS a tautology:
+
+\begin{proof}
+
+\(p \Rightarrow (p \vee q) \)
+
+\(\equiv \neg p \vee (p \vee q) \)
+
+\(\equiv (\neg p \vee p) \vee q \)
+
+\(\equiv 1 \vee q \)
+
+\(\equiv 1 \)
+
+\end{proof}
+
+(b) IS NOT a tautology:
+
+When \(p\) and \(q\) are both false, \(\neg (p\Rightarrow q)\) evaluates to false while \(\neg q\) evaluates to true. \\
+
+(c) IS a tautology:
+
+\begin{proof} I will show that \(p \oplus q\) is equivalent to \(p \Leftrightarrow q\):
+
+\(p \oplus q\)
+
+\(\equiv \neg ((p \vee q)\wedge \neg (p \wedge q)) \)
+
+\(\equiv \neg (p \vee q)\vee (p \wedge q) \)
+
+\(\equiv p \Leftrightarrow q \)
+
+\end{proof} 
+
+(d) IS NOT a tautology:
+
+When \(p\), \(q\) and \(r\) are all false, \( (p \Rightarrow q) \Rightarrow r \) evaluates to false while \\ \( p \Rightarrow (q \Rightarrow r ) \) evaluates to true. \\
+
+(e) IS NOT a tautology:
+
+When \(p\) is false and \(q\) is true, \(\neg p \wedge (p\Rightarrow q)\) evaluates to true while \(\neg q\) evaluates to false.
+
+\end{solution}
+
+\begin{problem}
+
+Circuits. Show how NAND gates can be used to simulate OR, AND and NOT gates.
+
+\end{problem}
+
+\begin{solution}
+
+I will represent a NAND gate with this pattern: \( \neg ( p \wedge q ) \) where the inputs are represented as statements \(p\) and \(q\). \\
+
+OR Gate
+
+\(a \vee b \equiv \neg (\neg (a \wedge a) \wedge \neg (b \wedge b) ) \) \\
+
+AND Gate
+
+\(a \wedge b \equiv \neg (\neg (a \wedge b) \wedge \neg (a \wedge b) ) \) \\
+
+NOT Gate
+
+\(\neg a \equiv \neg (a \wedge a) \)
+
+\end{solution}
+
+\end{document}
