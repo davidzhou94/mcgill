@@ -1,0 +1,131 @@
+\documentclass{article} 
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\newtheorem{problem}{Problem} 
+
+\theoremstyle{definition} 
+
+\newtheorem*{solution}{Solution} 
+
+\begin{document} \title{Assignment 3} 
+
+\author{Yang David Zhou, ID 260517397} 
+
+\date{\today}
+
+\maketitle
+
+\begin{problem} 
+
+Hamiltonian Path.
+
+\end{problem}
+
+\begin{solution}
+
+(a) We know that Longest Path is in NP because a poly-time certificate would be to traverse the given path \(P\) to verify whether it is a simple path in \(G\) with at least \(k\) edges.
+
+Reduce Hamiltonian Path to Longest Path.
+
+Set \(k=|V|-1\). If there is a simple path \(P\) in \(G=(V,E)\) that contains exactly \(|V|-1\) edges, then \(P\) will use every \(v\in G\) exactly once. We know that \(P\) cannot use more than \(|V|-1\) edges because a simple path cannot have any cycles by definition. So, a simple path will always contain one fewer edge than the number of vertices in the path. Therefore, any YES certificate for the Longest Path problem set up in this manner would imply \(P\) uses every vertex in \(G\) exactly once, corresponding to an equivalent YES certificate for the Hamiltonian Path problem. \\*
+
+(b) We know that Minimum Leaf Spanning Tree is in NP because a poly-time certificate would be to traverse the given tree \(T\) and verify that all vertices are in \(G\), then count the number of leaf nodes of the tree.
+
+Reduce Hamiltonian Path to Minimum Spanning Tree.
+
+Set \(k=2\). If a spanning tree \(T\) in \(G=(V,E)\) contains exactly 2 leaf nodes, then the edges and vertices in \(T\) form a path \(P\) that uses every \(v\in G\) exactly once. We know that the minimum number of leaf nodes in any tree is 2 because a tree is a graph that cannot contain any cycles so there must be at least 2 nodes with a degree of 1. The spanning tree must cover very vertex in \(G\) by definition. Therefore, any YES certificate for the Minimum Leaf Spanning problem set up in this manner would imply that \(\exists\) some path \(P\) in \(G\) that uses every vertex in \(G\) exactly once, corresponding to an equivalent YES certificate for the Hamiltonian Path problem. \\*
+
+Since Hamiltonian Path is NP-Complete and Hamiltonian Path \(\leadsto \) Longest Path and Hamiltonian Path \(\leadsto \) Minimum Leaf Spanning Tree, Longest Path and Minimum Leaf Spanning Tree are NP-Complete.
+
+\end{solution}
+
+\begin{problem}
+
+Hitting Set Problem.
+
+\end{problem}
+
+\begin{solution}
+
+Set Cover: Given a set \(U=\{u_1,...,u_n\}\), a collection of subsets \(S_1,S_2,...S_m\) of \(U\) and a number \(k\), are there \(k\) or fewer sets in \(S\) that cover all elements in \(U\)?
+
+Hitting Set: Given a set \(A=\{a_1,...,a_n\), a collection  of subsets \(B_1,...,B_m\) \( \forall i (B_i\subseteq A) \) and a number \(k\), is there a hitting set \(H\subseteq A, \forall i (H\cap B_i \neq \{\}) \) such that \(|H|\leq k\)?
+
+We know Hitting Set is in NP because a poly-time certificate would be to iterate through the elements of the given hitting set \(H\) and verify that \(\forall i (H\cap B_i \neq \{\}) \).
+
+Reduce Set Cover to Hitting Set to show that Hitting Set is NP-Complete.
+
+Create an element \(a_i\in A\) for every set \(S_i\). Create a set \(B_i\) for every \(u_i\) where the elements are the sets \(S_j\) which contain \(u_i\). If there is a hitting set \(H\in A\), then \(H\) is a set of sets (i.e. a collection of sets) that covers every element in \(U\) (i.e. \(H\) is a set cover). We know this is true because \(H\) must include at least one element from every set \(B_i\) which represents the sets that include \(u_i\). If \(|H|\leq k\) then we know that there are \(k\) or fewer sets in the set cover \(H\). Therefore, any YES certificate for the Hitting Set problem with this mapping from the Set Cover problem will be equivalent to a YES certificate for the corresponding Set Cover problem.
+
+Since Set Cover is NP-Complete and Set Cover \(\leadsto \) Hitting Set, Hitting Set is NP-Complete.
+
+\end{solution}
+
+\begin{problem}
+
+Dominating Set.
+
+\end{problem}
+
+\begin{solution}
+
+Vertex Cover: Given a graph \(G=\{V,E\}\) and a number \(k\), is there a set of vertices \(S\subseteq V\) such that every edge in \(E\) is incident to at least one vertex in \(S\) and \(|S|\leq k\)?
+
+Dominating Set: Given a graph \(G=\{V,E\}\) and a number \(k\), is there a a set of vertices \(S'\subseteq V\) such that every vertex is either in \(S'\) or connected by one edge to a vertex in \(S'\) and \(|S'|\leq k\)?
+
+We know Dominating is in NP because a poly-time certificate would be to traverse the graph and colour all edges from vertices in \(S'\) to check whether every vertex in \(G\) is incident to a coloured edge. Verify that \(|S'|\leq k\).
+
+Reduce Vertex Cover to Dominating Set to show that Dominating Set is NP-Complete.
+
+Create \(G'=\{V',E'\}\) an identical copy of \(G\). For every edge in \((v_i,v_j)\in E'\), delete that edge. Add a new vertex \(v_{ij}\in V'\) and three new edges \(v_i,v_j\), \(v_i,v_{ij}\) and \(v_{ij},v_j\). If there is a dominating set \(S'\in V', |S|\leq k\), then \(S'\) is either identical or essentially identical to a vertex cover. We know this is true because all the \(v_{ij}\) vertices that were created must either be in \(S'\) or connected to \(v_i\) or \(v_j\) in \(S'\). If any \(v_{ij}\) is in \(S'\), it can easily be replaced by either \(v_i\) or \(v_j\) while still satisfying the constraint in Dominating Set. So, any original edge \((i,j)\in E\) must be incident to at least one vertex in \(S'\). Therefore, any YES certificate for the Dominating Set problem with this mapping from the Vertex Cover problem will be equivalent to a YES certificate for the corresponding Vertex Cover problem.
+
+Since Vertex Cover is NP-Complete and Vertex Cover \(\leadsto \) Dominating Set, Dominating Set is NP-Complete.
+
+\end{solution}
+
+\begin{problem}
+
+Feedback Vertex Set.
+
+\end{problem}
+
+\begin{solution}
+
+Vertex Cover: Given a graph \(G=\{V,E\}\) and a number \(k\), is there a set of vertices \(S\subseteq V\) such that every edge in \(E\) is incident to at least one vertex in \(S\) and \(|S|\leq k\)?
+
+We know that Feedback Vertex Set is in NP because a poly-time certificate would be to traverse \(G-U\) where \(U\) is the given feedback vertex set to verify that \(G-U\) is acyclic.
+
+Reduce Vertex Cover to Feedback Vertex Set to show that Feedback Vertex Set is NP-Complete.
+
+Assume that \(G\) is undirected. Even if it is directed, this will work if all directed edges are replaced with an undirected edge. Create a new graph \(G'=\{V,E'\}\) by cloning \(G\) and replacing every undirected edge \((i,j)\) with directed edges \((i,j)\) and \((j,i)\) to form a simple cycle that consists of exactly vertices \(v_i, v_j \in V\). If there is a set \(U\subseteq V\) that contains at least one vertex from every directed cycle then \(U\) is also a set of vertices in \(G\) such that every edge in \(E\) is incident to at least one vertex in \(U\). We know this is true because every simple cycle in \(G'\) represents exactly one edge in \(G\). So if \(G'-U\) is an acyclic graph, it is also a graph with no edges and it is identical to \(G-U\). Therefore, any YES certificate for the Feedback Vertex Set problem with this mapping from the Vertex Cover problem will be equivalent to a YES certificate for the corresponding Vertex Cover problem.
+
+Since it is given that Vertex Cover is NP-Complete and Vertex Cover \(\leadsto \) Feedback Vertex Set, Feedback Vertex Set is NP-Complete.
+
+\end{solution}
+
+\begin{problem}
+
+Bartering.
+
+\end{problem}
+
+\begin{solution}
+
+Bartering: 
+
+\end{solution}
+
+\begin{problem}
+
+Galactic Shortest Paths.
+
+\end{problem}
+
+\begin{solution}
+
+Galactic Shortest Path: 
+
+\end{solution}
+
+\end{document}
