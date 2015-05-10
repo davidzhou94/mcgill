@@ -1,1 +1,11 @@
 *.stackdump
+*.out
+*.log
+*.aux
+*.gz
+*.gz
+*.c~
+*.log
+*.aux
+*.out
+COMP310/A1/mini_PA1.pdf
