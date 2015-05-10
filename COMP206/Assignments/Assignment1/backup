@@ -1,0 +1,3 @@
+echo 'Attention: This script will back up only'
+echo 'files and omit sub-directories'
+\cp -f ~/Source/* ~/Source/Backup/

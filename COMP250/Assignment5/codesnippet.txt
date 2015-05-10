@@ -1,0 +1,53 @@
+/*eliminates possibilities based on having numbers only in the same 
+			row in a grid zone*/
+			for (int c=0;c<SIZE;c++) {
+				for (int r=0;r<SIZE;r++) {
+					final int cBegin = SIZE * c + 1;
+					final int cEnd = SIZE * (c+1);
+					final int rBegin = SIZE * r + 1;
+					final int rEnd = SIZE * (r+1);
+					zoneLoop: for (int i=0;i<N;i++) {
+						int o=-1;
+						innerRowLoop: for (int j=rBegin-1;j<rEnd;j++) {
+							for (int k=cBegin-1;k<cEnd;k++) {
+								if (ans[r][c].clue==i+1) continue zoneLoop;
+								if (ans[j][k].possible.get(i)) {
+									if (o>=0) continue innerRowLoop;
+									else o=k;
+								}
+								
+							}
+						}
+						if (o>=0) {
+							for (int j=0;j<N;j++) {
+								if (ans[j][o].clue<1) {
+									if (c+1!=ans[j][o].cZone) {
+										ans[j][o].possible.set(i,false);
+									}
+								}
+							}
+						}
+						
+						o=-1;
+						innerColLoop: for (int j=cBegin-1;j<cEnd;j++) {
+							for (int k=rBegin-1;k<rEnd;k++) {
+								if (ans[r][c].clue==i+1) continue zoneLoop;
+								if (ans[k][j].possible.get(i)) {
+									if (o>=0) continue innerColLoop;
+									else o=k;
+								}
+								
+							}
+						}
+						if (o>=0) {
+							for (int j=0;j<N;j++) {
+								if (ans[o][j].clue<1) {
+									if (r+1!=ans[o][j].rZone) {
+										ans[o][j].possible.set(i,false);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
