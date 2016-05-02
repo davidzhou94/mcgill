@@ -1,0 +1,122 @@
+-------------------------------
+-Testing printing method...   -
+-------------------------------
+                                                               Led Zeppelin                                                      
+                         The Beatles                                                                 Pink Floyd                  
+             Queen                         Metallica                                ACDC                           Rolling Stones
+Guns N' Roses     Nirvana           The Who         Linkin Park            Green Day    Black Sabbath          RHCP              
+-------------------------------
+- Testing print linear  ...   -
+-------------------------------
+(Led Zeppelin, 0) (The Beatles, 1) (Pink Floyd, 2) (Queen, 3) (Metallica, 4) (ACDC, 5) (Rolling Stones, 6) (Guns N' Roses, 7) (Nirvana, 8) (The Who, 9) (Linkin Park, 10) (Green Day, 11) (Black Sabbath, 12) (RHCP, 13) 
+-------------------------------
+- Testing operator  []  ...   -
+-------------------------------
+Led Zeppelin has priority 0
+The Beatles has priority 1
+Pink Floyd has priority 2
+Queen has priority 3
+Metallica has priority 4
+ACDC has priority 5
+Rolling Stones has priority 6
+Guns N' Roses has priority 7
+Nirvana has priority 8
+The Who has priority 9
+Linkin Park has priority 10
+Green Day has priority 11
+Black Sabbath has priority 12
+RHCP has priority 13
+-------------------------------
+- Testing heapify up    ...   -
+-------------------------------
+- Pusing A with priority 3...   -
+A
+
+(A, 3) 
+- Pusing B with priority 8...   -
+ A
+B 
+(A, 3) (B, 8) 
+- Pusing C with priority 10...   -
+ A 
+B C
+
+(A, 3) (B, 8) (C, 10) 
+- Pusing D with priority 4...   -
+  A 
+ D C
+B 
+(A, 3) (D, 4) (C, 10) (B, 8) 
+- Pusing E with priority 5...   -
+   A 
+ D  C
+B E 
+(A, 3) (D, 4) (C, 10) (B, 8) (E, 5) 
+- Pusing F with priority 2...   -
+   F  
+ D   A
+B E C 
+(F, 2) (D, 4) (A, 3) (B, 8) (E, 5) (C, 10) 
+- Pusing G with priority 1...   -
+   G   
+ D   F 
+B E C A
+
+(G, 1) (D, 4) (F, 2) (B, 8) (E, 5) (C, 10) (A, 3) 
+-------------------------------
+- Testing operator  +=  ...   -
+-------------------------------
+       a     
+   b       G 
+ F   e   A  c
+D d B E C f 
+(a, 0) (b, 1) (G, 1) (F, 2) (e, 4) (A, 3) (c, 2) (D, 4) (d, 3) (B, 8) (E, 5) (C, 10) (f, 5) 
+-------------------------------
+- Testing heapify down...     -
+-------------------------------
+The order of the removal should be: G F A D E B C
+------
+   G   
+ D   F 
+B E C A
+
+------
+(G, 1) (D, 4) (F, 2) (B, 8) (E, 5) (C, 10) (A, 3) 
+------
+   F  
+ D   A
+B E C 
+------
+(F, 2) (D, 4) (A, 3) (B, 8) (E, 5) (C, 10) 
+------
+   A 
+ D  C
+B E 
+------
+(A, 3) (D, 4) (C, 10) (B, 8) (E, 5) 
+------
+  D 
+ E C
+B 
+------
+(D, 4) (E, 5) (C, 10) (B, 8) 
+------
+ E 
+B C
+
+------
+(E, 5) (B, 8) (C, 10) 
+------
+ B
+C 
+------
+(B, 8) (C, 10) 
+------
+C
+
+------
+(C, 10) 
+-------------------------------------------
+- Testing input stream constructor...     -
+-------------------------------------------
+(the, 0) (of, 3) (a, 2) (wave;, 6) (I, 4) (What, 6) (and, 5) (Bourton, 7) (about, 7) (How, 7) (open, 5) (always, 7) (For, 7) (as, 6) (at, 6) (French, 7) (burst, 7) (calm,, 7) (can, 7) (chill, 7) (air, 7) (air., 7) (early, 7) (eighteen, 7) (feeling, 7) (flap, 7) (fresh,, 7) ((for, 7) (happen..., 7) (to, 6) (was, 6) (awful, 7) (in, 7) (into, 7) (it, 7) (kiss, 7) (lark!, 7) (like, 7) (little, 7) (me, 7) (morning;, 7) (now,, 7) (course,, 7) (did,, 7) (plunge!, 7) (plunged, 7) (seemed, 7) (sharp, 7) (so, 7) (solemn,, 7) (something, 7) (squeak, 7) (standing, 7) (stiller, 7) (than, 7) (that, 7) (girl, 7) (then, 7) (there, 7) (this, 7) (hear, 7) (hinges,, 7) (was), 7) (how, 7) (when,, 7) (which, 7) (window,, 7) (windows, 7) (with, 7) (yet, 7) 

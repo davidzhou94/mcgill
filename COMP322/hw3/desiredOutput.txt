@@ -1,0 +1,48 @@
+-------------------------------
+- Testing dfs...              -
+-------------------------------
+LedZeppelin 01
+Nirvana 000
+Queen 001
+TheBeatles 1
+- The output should be the following, or the negative (0s replaced with ones)-
+LedZeppelin 01
+Nirvana 000
+Queen 001
+TheBeatles 1
+-------------------------------
+- Testing Huffman Code...     -
+-------------------------------
+a 0
+b 10
+c 110
+d 111
+- The output should be the following, 
+a 0
+b 10
+c 110
+d 111
+-------------------------------
+- Testing encoding...         -
+-------------------------------
+00101000110110111111
+- The output should be the following, 
+00101000110110111111
+-------------------------------
+- Testing Trees from Codes... -
+-------------------------------
+a 0
+b 10
+c 110
+d 111
+-------------------------------
+- Testing decoder...          -
+-------------------------------
+a a b b a a c c d d 
+- The output should be the following, 
+a a b b a a c c d d
+
+-------------------------------
+- Testing woolf...            -
+-------------------------------
+What a lark! What a plunge! For so it always seemed to me when, with a little squeak of the hinges, which I can hear now, I burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave; chill and sharp and yet (for a girl of eighteen as I then was) solemn, feeling as I did, standing there at the open window, that something awful was about to happen...
